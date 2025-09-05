@@ -1,5 +1,7 @@
 # CS 260 Notes
+In the GitHub assignment I learned how to use Visual Studio to make Git Commits and Pushes easier. Not having to navigate Console Commands every time is nice.
 
+# Dont want to delete any of this yet and am leaving it at the end of my notes for now
 [My startup - Simon](https://simon.cs260.click)
 Not changing anything big here, just testing.
 ## Helpful links
