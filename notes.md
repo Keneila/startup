@@ -1,7 +1,7 @@
 # CS 260 Notes
 
 [My startup - Simon](https://simon.cs260.click)
-
+Not changing anything big here, just testing.
 ## Helpful links
 
 - [Course instruction](https://github.com/webprogramming260)
