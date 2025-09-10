@@ -1,6 +1,5 @@
-# Your startup name here
-Tail End Scoopers Website by Keneila Hatch
-(Push Test Last One)
+# RAD Education Website
+by Keneila Hatch
 [My Notes](notes.md)
 
 A brief description of the application here.
@@ -14,12 +13,9 @@ A brief description of the application here.
 
 ## 🚀 Specification Deliverable
 
-> [!NOTE]
->  Fill in this sections as the submission artifact for this deliverable. You can refer to this [example](https://github.com/webprogramming260/startup-example/blob/main/README.md) for inspiration.
-
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
+- [x] Proper use of Markdown
 - [ ] A concise and compelling elevator pitch
 - [ ] Description of key features
 - [ ] Description of how you will use each technology
@@ -27,7 +23,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+There are thousands of elementary-school aged children who struggle with school in various ways. RAD education provides resources for those students, such as fun trivia games, and lets you know how your children are doing and how you can better support their education process. 
 
 ### Design
 
@@ -35,29 +31,24 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
-
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Login, logout, and register
+- Parents recieve children's trivia scores, and can add more children to their account
+- Trivia game, you answer by selecting one of the multiple choice buttons (updated question from outside source if I can find one)
+- An about page describing the mission of the startup
+- A homepage with a description of how the website works (if no trivia question source, an outside sourced picture will be on this page)
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - 7 different pages - Home page, About page, parent login/register, child login/register, Parent View, Child View, Trivia Game
+- **CSS** - Appealing use of color and space, Easy to understand navigation design, Color telling you which answer was correct
+- **React** - Single page application with routing between views, reactive user controls, state hooks
+- **Service** - Endpoints for authentication, storing/retrieving scores, storing/retrieving parent or child status, Third party call for trivia questions
+- **DB/Login** - Stores authentication, scores, and connected children to parent accounts
+- **WebSocket** - Sending parents updates on their children
 
 ## 🚀 AWS deliverable
 
