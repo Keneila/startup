@@ -23,7 +23,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-There are thousands of elementary-school aged children who struggle with school in various ways. RAD education provides resources for those students that are curated for their individual needs, and lets you know how your children are doing and how you can better support their education process. The resources will be developed according to the latest research in child and neurodivergent development, to accomodate a wide range of learning needs, and will be diverse, from trivia games to dyslexia friendly curriculums. 
+There are thousands of elementary-school aged children who struggle with school in various ways. RAD education provides resources for those students that are curated for their individual needs, and lets you know how your children are doing and how you can better support their education process. The resources will be developed according to the latest research in child and neurodivergent development, to accomodate a wide range of learning needs, and will be diverse: containing anything from trivia games to dyslexia friendly curriculums. 
 
 ### Design
 
