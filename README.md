@@ -2,7 +2,7 @@
 by Keneila Hatch
 [My Notes](notes.md)
 
-A brief description of the application here.
+A supplemental learning software website that provides resources for struggling students to help them learn subjects, when at full capacity. For the purposes of this course, the website will be a mockup of basic navigation, with only a small trivia game for a specific subject available as a resource. This is because I will not have the time to create multiple games and other useful resources. Parents register an account and then add children to it. They recieve updates on their children's work and can access their own resources to help their children. They can navigate between their children, with inividual updates and resources for each. Children, when they are logged in, can pick a subject and use the resources available. 
 
 
 > [!NOTE]
@@ -16,10 +16,10 @@ A brief description of the application here.
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
@@ -29,7 +29,7 @@ There are thousands of elementary-school aged children who struggle with school 
 
 ![Design image](RADEducationDesign.JPG)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+You start on the home page, and can navigate to About, Student Login, and Parent Login from there. The Login Page will also allow you to register if needed. Parents can navigate between their children, and, in the potential future, between updates view and parent resources view. They can register new children to their account. Only one of the course subjects is going to be available for Parents and Children for this class, with the other subjects being labeled as unavailable. The child view will mainly be a mockup where the only two available buttons are logout and a button to play the trivia game. The about page will be really simple, with a similar design to the home page. 
 
 ### Key features
 
