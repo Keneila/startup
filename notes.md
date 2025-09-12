@@ -12,7 +12,7 @@ In the GitHub assignment I learned how to use Visual Studio to make Git Commits 
 ## AWS
 
 My IP address is: 174.129.219.132
-Launching my AMI I was able to visit the page without issues, and created an elastic IP. ssh -i Documents/cs260/CS260Server.pem ubuntu@174.129.219.132
+Launching my AMI I was able to visit the page without issues, and created an elastic IP.
 
 ## Caddy
 
