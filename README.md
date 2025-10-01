@@ -29,21 +29,20 @@ There are thousands of elementary-school aged children who struggle with school 
 
 ![Design image](RADEducationDesign.JPG)
 
-You start on the home page, and can navigate to About, Student Login, and Parent Login from there. The Login Page will also allow you to register if needed. Parents can navigate between their children, and, in the potential future, between updates view and parent resources view. They can register new children to their account. Only one of the course subjects is going to be available for Parents and Children for this class, with the other subjects being labeled as unavailable. The child view will mainly be a mockup where the only two available buttons are logout and a button to play the trivia game. The about page will be really simple, with a similar design to the home page. 
+You start on the home page, and can navigate to Register, Student Login, and Parent Login from there. Parents can navigate between their children, and, in the potential future, between updates view and parent resources view. They can register new children to their account. Only one of the course subjects is going to be available for Parents and Children for this class, with the other subjects being labeled as unavailable. The child view will mainly be a mockup where the only two available buttons are logout and a button to play the trivia game. The about page will be really simple, with a similar design to the home page. 
 
 ### Key features
 
 - Login, logout, and register
 - Parents recieve children's trivia scores, and can add more children to their account
 - Trivia game, you answer by selecting one of the multiple choice buttons (updated question from outside source if I can find one)
-- An about page describing the mission of the startup
 - A homepage with a description of how the website works (if no trivia question source, an outside sourced picture will be on this page)
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - 7 different pages - Home page, About page, parent login/register, child login/register, Parent View, Child View, Trivia Game
+- **HTML** - 7 different pages - Home page, register, parent login, child login, Parent View, Child View, Trivia Game
 - **CSS** - Appealing use of color and space, Easy to understand navigation design, Color telling you which answer was correct
 - **React** - Single page application with routing between views, reactive user controls, state hooks
 - **Service** - Endpoints for authentication, storing/retrieving scores, storing/retrieving parent or child status, Third party call for trivia questions
@@ -54,21 +53,21 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://rad-education.click).
 
 ## 🚀 HTML deliverable
 Testing
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - 7 seperate pages: Home, Student Login, Parent Login, Register, Parent View, Student View, and Trivia
+- [x] **Proper HTML element usage** - used many different elements in an organized structure and with intent
+- [x] **Links** - Links to every page and to the github
+- [x] **Text** - The home page especially has a lot of text on it, but most pages have something
+- [x] **3rd party API placeholder** - Either the trivia game or the images in the home page will be third party calls
+- [x] **Images** - Two images on the home page
+- [x] **Login placeholder** - Three login pages, each for a different purpose.
+- [x] **DB data placeholder** - The various logins, amount of children under a parent, and the trivia scores are going to be database applications
+- [x] **WebSocket placeholder** - The parent gets updates about a child's score on their page.
 
 ## 🚀 CSS deliverable
 
