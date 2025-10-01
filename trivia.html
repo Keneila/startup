@@ -28,13 +28,53 @@
     </header>
 
     <main>
-        <p> Available Subjects</p>
-        <nav class="subject-list">
-            <div><a href="trivia.html">Math</a></div>
-            <div><a href="trivia.html">Literature</a></div>
-            <div><a href="trivia.html">History</a></div>
-            <div><a href="trivia.html">Science</a></div>
-        </nav>
+        <div>
+        <label for="count">Score</label>
+        <input type="text" id="count" value="--" readonly />
+        </div>
+         <div>
+        <button>Restart</button>
+      </div>
+      <div>
+        <table>
+          <tr>
+            <td>
+              <button>
+                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
+                  <!-- SVG
+                    M move <to x,y>
+                    Q quadratic curve <control point x,y> <to x,y>
+                -->
+                  <path d="M 95,5 95,95 5,95 Q 5,5 95,5" fill="green" />
+                </svg>
+              </button>
+            </td>
+            <td>
+              <button>
+                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
+                  <path d="M5,5 5,95 95,95 Q 95,5 5,5" fill="red" />
+                </svg>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button>
+                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
+                  <path d="M5,5 95,5 95,95 Q 5,95 5,5" fill="blue" />
+                </svg>
+              </button>
+            </td>
+            <td>
+              <button>
+                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
+                  <path d="M95,5 5,5 5,95 Q 95,95 95,5" fill="yellow" />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
     </main>
 
     <footer>
