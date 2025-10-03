@@ -4,22 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <header>
-      <h1>RAD Education</h1>
-      <!-- Navigation elements -->
-      <nav>
-        <menu>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="login.html">Educators</a></li>
-          <li><a href="childLog.html">Students</a></li>
-          <li><a href="register.html">Sign Up</a></li>
-        </menu>
-      </nav>
-
-      <hr />
-    </header>
+    <div class="container">
+          <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
+            <h1 class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" id="logo">RAD Education</h1>
+            <!-- Navigation elements -->
+            <nav >
+              <menu class="nav nav-tabs col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="index.html" class="nav-link px-2 link-dark">Home</a></li>
+                <li><a href="login.html" class="nav-link px-2 link-dark">Educators</a></li>
+                <li><a href="childLog.html" class="nav-link px-2 link-dark">Students</a></li>
+              </menu>
+            </nav>
+            <div class="text-end">
+              <a href="register.html" class="btn btn-outline-primary me-2">Sign Up</a>
+            </div>
+            <hr />
+          </header>
+    </div>
 
     <main>
         <h1>Register Account</h1>
@@ -46,11 +56,11 @@
       </form>
     </main>
 
-    <footer>
-      <hr />
-      <span class="text-reset">Author: Keneila Hatch</span>
-      <br />
-      <a href="https://github.com/Keneila/startup.git">GitHub</a>
-    </footer>
+    <div class="container-fluid border-top bg-light footer">
+      <footer class="d-flex justify-content-center justify-content-md-between py-3 my-4">
+        <p class="text-center py-2 mb-md-0 author">Author: Keneila Hatch</p>
+        <a class= "btn btn-outline-primary github" href="https://github.com/Keneila/startup.git">GitHub</a>
+      </footer>
+    </div>
   </body>
 </html>
