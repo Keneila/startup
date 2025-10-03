@@ -57,3 +57,8 @@ p {
     font-size: calc(15x + 2vmin);
     margin-bottom: 20px;
 }
+
+.hoverlight:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
