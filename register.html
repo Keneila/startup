@@ -35,25 +35,42 @@
         <h1 class="login-title">Register Account</h1>
         <div class="container justify-content-center mb-4 login">
           <form method="get" action="parent.html">
-              <button type="submit" formaction="parent.html">Educator</button>
-              <button type="submit" formaction="child.html">Student</button>
 
-              <div class="mb-3">
-                <label class="form-label">Email address</label>
-                <input class="form-control" type="text" placeholder="your@email.com" />
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Username</label>
-                <input class="form-control" type="text" placeholder="Username" />
-              </div>
+              <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#educator" type="button" role="tab" aria-controls="educator" aria-selected="true">Educator</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#student" type="button" role="tab" aria-controls="student" aria-selected="false" formaction="child.html">Student</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="educator" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="mb-3">
+                    <label class="form-label">Email address</label>
+                    <input class="form-control" type="text" placeholder="your@email.com" />
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="student" role="tabpanel" aria-labelledby="profile-tab">
+                  <div class="mb-3">
+                    <label class="form-label">Educator's Email address</label>
+                    <input class="form-control" type="text" placeholder="educators@email.com" />
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input class="form-control" type="text" placeholder="Username" />
+                  </div>
+                </div>
               <div class="mb-3">
                 <label class="form-label">Password</label>
                 <input class="form-control" type="password" placeholder="Password" />
             </div>
 
               <button class="btn btn-primary"type="submit">Register</button>
+              <button class="btn btn-primary"type="submit" formaction="child.html">Temporary Student Page Link</button>
         </form>
       </div>
+      
     </main>
 
     <div class="container-fluid border-top bg-light footer">
