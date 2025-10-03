@@ -32,22 +32,21 @@
     </div>
 
     <main>
-        <h1>Student Login</h1>
-        <form method="get" action="child.html">
-            <div>
-                <span>@</span>
-                <input type="text" placeholder="username" />
-            </div>
-
-            <div>
-                <span>🔒</span>
-                <input type="password" placeholder="password" />
-            </div>
-
-            <button type="submit">Login</button>
-            
-            <button type="submit" formaction="register.html">Register</button>
+        <h1 class="login-title">Student Login</h1>
+      <div class="container justify-content-center mb-4 login">
+      <form method="get" action="parent.html">
+          <div class="mb-3">
+              <label class="form-label">Username</label>
+              <input class="form-control" type="text" placeholder="Username" />
+          </div>
+          <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input class="form-control" type="password" placeholder="Password" />
+          </div>
+          <button class="btn btn-primary" type="submit">Login</button>
+          <button class="btn btn-outline-primary" type="submit" formaction="register.html">Register</button>
       </form>
+      </div>
     </main>
 
     <div class="container-fluid border-top bg-light footer">
