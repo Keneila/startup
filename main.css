@@ -24,3 +24,10 @@ body {
   margin-right: 20px;
   margin-bottom: 20px;
 }
+
+#logo {
+    word-break: keep-all;
+    white-space: nowrap;
+    text-size-adjust:calc(10px + 2vmin);
+    margin-right: 10px;
+}
