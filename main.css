@@ -3,3 +3,16 @@ body {
   flex-direction: column;
   min-width: 375px;
 }
+
+.footer {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.github {
+  margin-left: 10px;
+}
+
+.author {
+  margin-right: 10px;
+}
