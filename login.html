@@ -30,21 +30,25 @@
             <hr />
           </header>
     </div>
+
     <main>
-      <h1>Educator Login</h1>
+      <h1 class="login-title">Educator Login</h1>
+      <div class="container justify-content-center mb-4 login">
       <form method="get" action="parent.html">
-          <div>
-              <span>@</span>
-              <input type="text" placeholder="your@email.com" />
+          <div class="mb-3">
+              <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
+              <input class="form-control" type="text" placeholder="your@email.com" />
           </div>
-          <div>
-              <span>🔒</span>
-              <input type="password" placeholder="password" />
+          <div class="mb-3">
+              <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+              <input class="form-control" type="password" placeholder="Password" />
           </div>
-          <button type="submit">Login</button>
-          <button type="submit" formaction="register.html">Register</button>
+          <button class="btn btn-primary" type="submit">Login</button>
+          <button class="btn btn-outline-primary" type="submit" formaction="register.html">Register</button>
       </form>
+      </div>
     </main>
+
 
     <div class="container-fluid border-top bg-light footer">
       <footer class="d-flex justify-content-center justify-content-md-between py-3 my-4">

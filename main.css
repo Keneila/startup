@@ -48,3 +48,12 @@ p {
     height: auto;
     margin-bottom: 10px;
 }
+
+.login {
+    max-width: 400px;
+    margin: auto;
+}
+.login-title {
+    font-size: calc(15x + 2vmin);
+    margin-bottom: 20px;
+}
