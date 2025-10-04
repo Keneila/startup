@@ -73,12 +73,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [X] **Header, footer, and main content body** - All three elements are designed and organized on every page.
+- [X] **Navigation elements** - There is a nav menu on every page, though some are more robust than others
+- [X] **Responsive to window resizing** - The website adjusts size and organization with window resizing. 
+- [X] **Application elements** - Every page has all the predetermined elements, and number of types. Everything is organized. 
+- [X] **Application text content** - There is text of some sort on every page, and p elements especially on the home page
+- [X] **Application images** - There are two differently designed pictures on the home page
 
 ## 🚀 React part 1: Routing deliverable
 
