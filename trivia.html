@@ -24,46 +24,47 @@
     </div>
 
     <main>
+      <div class="container text-center">
         <div>
         <h2>Trivia Game</h2>
-        <p> Which is the capital of France?</p>
+        <p class="text-center"> Which is the capital of France?</p>
         </div>
-        <div>
+        <div class="d-flex justify-content-center">
         <table>
           <tr>
             <td>
-              <button>
+              <button class="btn btn-success">
                 A. Paris
               </button>
             </td>
             <td>
-              <button>
+              <button class="btn btn-outline-secondary">
                B. London
               </button>
             </td>
           </tr>
           <tr>
             <td>
-              <button>
+              <button class="btn btn-outline-secondary">
                C. Berlin
               </button>
             </td>
             <td>
-              <button>
+              <button class="btn btn-outline-secondary">
                D. Madrid
               </button>
             </td>
           </tr>
         </table>
       </div>
-      <br />
-      <div>
-        <label for="count">Score</label>
-        <input type="text" id="count" value="--" readonly />
+      <div class="d-flex justify-content-center mt-4 triv">
+        <div class="score">
+        ---
         </div>
-        <br />
-         <div>
-        <button>Restart</button>
+        <div>
+        <button class="btn btn-primary mb-4">Restart</button>
+        </div>
+      </div>
       </div>
     </main>
 
