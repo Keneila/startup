@@ -4,28 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trivia</title>
+        <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <header>
-      <h1>RAD Education</h1>
-      <!-- Navigation elements -->
-      <nav>
-        <menu class="child-menu">
-          <li>
-            <a href="child.html">Subjects</a>
-            <ul class="dropdown">
-              <li><a href="child.html">Math</a></li>
-              <li><a href="child.html">Literature</a></li>
-              <li><a href="child.html">History</a></li>
-              <li><a href="child.html">Science</a></li>
-            </ul>
-        </li>
-          <li><a href="index.html">Logout</a></li>
-        </menu>
-      </nav>
-
-      <hr />
-    </header>
+    <div class="container">
+      <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
+        <h1 class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" id="logo">RAD Education</h1>
+        <h3 class=""> Welcome Username</h3>
+        <div class="text-end">
+            <a href="index.html" class="btn btn-outline-primary me-2">Logout</a>
+          </div>
+      </header>
+    </div>
 
     <main>
         <div>
@@ -71,11 +67,14 @@
       </div>
     </main>
 
-    <footer>
-      <hr />
-      <span class="text-reset">Author: Keneila Hatch</span>
-      <br />
-      <a href="https://github.com/Keneila/startup.git">GitHub</a>
-    </footer>
+<div class="container-fluid border-top bg-light footer">
+      <footer class="d-flex justify-content-center justify-content-md-between py-3 my-4">
+        <p class="text-center py-2 mb-md-0 author">Author: Keneila Hatch</p>
+        <a class= "btn btn-outline-primary github" href="https://github.com/Keneila/startup.git">GitHub</a>
+      </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
   </body>
 </html>
