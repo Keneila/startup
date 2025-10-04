@@ -93,3 +93,9 @@ p {
   background-color: #300;
   margin-right: 10px;
 }
+
+@media (max-width: 1000px) {
+    .menu{
+        display: none;
+    }
+}

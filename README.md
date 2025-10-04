@@ -75,7 +75,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [X] **Header, footer, and main content body** - All three elements are designed and organized on every page.
 - [X] **Navigation elements** - There is a nav menu on every page, though some are more robust than others
-- [X] **Responsive to window resizing** - The website adjusts size and organization with window resizing. 
+- [X] **Responsive to window resizing** - The website adjusts size and organization with window resizing, Welcome Username goes away when the width gets below 1000px.
 - [X] **Application elements** - Every page has all the predetermined elements, and number of types. Everything is organized. 
 - [X] **Application text content** - There is text of some sort on every page, and p elements especially on the home page
 - [X] **Application images** - There are two differently designed pictures on the home page
