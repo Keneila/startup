@@ -84,9 +84,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [X] **Bundled using Vite** - set up and bundled through vite
+- [X] **Components** - jsx file for every view
+- [X] **Router** -  The headers were different, so only the footer stayed in the main App
 
 ## 🚀 React part 2: Reactivity deliverable
 
