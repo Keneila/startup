@@ -2,8 +2,52 @@ import React from 'react';
 
 export function Register() {
   return (
-    <main className="container-fluid bg-secondary text-center">
-      <div>Register component displayed here</div>
+    <main>
+        <h1 className="login-title">Register Account</h1>
+        <div className="container justify-content-center mb-4 login">
+          <form method="get" action="/parent">
+
+              <ul className="nav nav-tabs mb-3" id="myTab" role="tablist">
+                <li className="nav-item" role="presentation">
+                  <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#educator" type="button" role="tab" aria-controls="educator" aria-selected="true">Educator</button>
+                </li>
+                <li className="nav-item" role="presentation">
+                  <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#student" type="button" role="tab" aria-controls="student" aria-selected="false" formaction="/child">Student</button>
+                </li>
+              </ul>
+              <div className="tab-content" id="myTabContent">
+                <div className="tab-pane fade show active" id="educator" role="tabpanel" aria-labelledby="home-tab">
+                  <div className="mb-3">
+                    <label className="form-label">Email address</label>
+                    <input className="form-control" type="text" placeholder="your@email.com" />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Password</label>
+                    <input className="form-control" type="password" placeholder="Password" />
+                  </div>
+                  <button className="btn btn-primary" type="submit">Register</button>
+                  <code></code>
+                </div>
+                <div className="tab-pane fade" id="student" role="tabpanel" aria-labelledby="profile-tab">
+                  <div className="mb-3">
+                    <label className="form-label">Educator's Email address</label>
+                    <input className="form-control" type="text" placeholder="educators@email.com" />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Username</label>
+                    <input className="form-control" type="text" placeholder="Username" />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Password</label>
+                    <input className="form-control" type="password" placeholder="Password" />
+                  </div>
+                  <button className="btn btn-primary" type="submit" formaction="/child">Register</button>
+                  <code></code>
+                </div>
+                </div>
+        </form>
+      </div>
+    
     </main>
   );
 }
