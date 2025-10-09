@@ -8,8 +8,8 @@ import { Login } from './login/login.jsx';
 import { Child } from './child/child.jsx';
 import { Parent } from './parent/parent.jsx';
 import { Register } from './register/register.jsx';
-import { childLog } from './childLog/childLog.jsx';
 import { Trivia } from './trivia/trivia.jsx';
+import { Student } from './student/student.jsx';
 
 export default function App() {
   return (
@@ -22,7 +22,7 @@ export default function App() {
               <menu className="nav nav-tabs col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><NavLink to="/" className="nav-link active px-2 link-dark">Home</NavLink></li>
                 <li><NavLink to="/login" className="nav-link px-2 link-dark">Educators</NavLink></li>
-                <li><NavLink to="/childLog" className="nav-link px-2 link-dark">Students</NavLink></li>
+                <li><NavLink to="/student" className="nav-link px-2 link-dark">Students</NavLink></li>
               </menu>
             </nav>
             <div className="text-end">
@@ -34,13 +34,14 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/childLog" element={<childLog />} />
               <Route path="/child" element={<Child />} />
               <Route path="/parent" element={<Parent />} />
               <Route path="/register" element={<Register />} />
               <Route path="/trivia" element={<Trivia />} />
+              <Route path="/student" element={<Student />} />
+              <Route path='*' element={<NotFound />} />
             </Routes>
-            
+
         </div>
 
         <div className="container-fluid border-top bg-light footer">
@@ -53,4 +54,8 @@ export default function App() {
     </div>
     </BrowserRouter>
   );
+}
+
+function NotFound() {
+  return <main className="container-fluid bg-secondary text-center">404: Return to sender. Address unknown.</main>;
 }
