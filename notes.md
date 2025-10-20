@@ -285,21 +285,35 @@ JSON (JavaScript Object Notation) is a text-based format for structured data usi
 ```
 ### What does the console command chmod, pwd, cd, ls, vim, nano, mkdir, mv, rm, man, ssh, ps, wget, sudo do?
 chmod - change permissions
+
 pwd - print working directory,
+
 cd - change directory,
+
 ls - list files,
+
 vim/nano - text editors,
+
 mkdir - make directory,
+
 mv - move/rename,
+
 rm - remove,
+
 man - manual,
+
 ssh - remote shell,
+
 ps -processes,
+
 wget - download files,
+
 sudo - run as admin
 
 ### Which of the following console command creates a remote shell session?
 ssh
+
+To remotely enter startup server: ssh -i path/to/your/key.pem ubuntu@domainname.click
 
 ### Which of the following is true when the -la parameter is specified for the ls console command?
 ls -la lists all files (including hidden) in long format
@@ -323,13 +337,14 @@ A DNS A record points to an IP address; it should not point to another A record.
 
 ### What will the following code using Promises output when executed?
 Many possibilities depending on promise behavior. Examples:
+```
 1) Promise.resolve('Done').then(console.log) -> 'Done'
 2) Promise.reject('Error').catch(console.error) -> 'Error'
 3) new Promise(res => setTimeout(() => res('Hi'),1000)).then(console.log) -> 'Hi' after 1s
 4) Async function returns value -> printed when awaited or .then
 5) Promise chain: Promise.resolve(2).then(x=>x*2).then(x=>x+1).then(console.log) -> 5
 6) Reject handled -> shows error via catch.
-
+```
 
 
 
