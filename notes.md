@@ -520,6 +520,36 @@ console.log(await cow());
 // OUTPUT: moo
 ```
 
+Making the UI react to changes in user input or data, is one of the architectural foundations of React. React enables reactivity with three major pieces of a React component: props, state, and render.
+
+React keeps a table of state values for every component. React records requested state in the table whenever a updateState method is called. Then periodically, React will rerender every component that has had a change since the last render occurred. Be careful about your assumptions of when state is updated. Just because you called updateState does not mean that you can access the updated state on the next line of code. Updates happen asynchronously, and therefore you never really know when it is going to happen. You only know that it will eventually happen.
+
+
+### JSON
+```json
+{
+  "class": {
+    "title": "web programming",
+    "description": "Amazing"
+  },
+  "enrollment": ["Marco", "Jana", "فَاطِمَة"],
+  "start": "2025-02-01",
+  "end": null
+}
+```
+```js
+const obj = { a: 2, b: 'crockford', c: undefined };
+const json = JSON.stringify(obj);
+const objFromJson = JSON.parse(json);
+
+console.log(obj, json, objFromJson);
+
+// OUTPUT:
+// {a: 2, b: 'crockford', c: undefined}
+// {"a":2, "b":"crockford"}
+// {a: 2, b: 'crockford'}
+```
+
 ## Dont want to delete any of this yet and am leaving it at the end of my notes for now
 [My startup - Simon](https://simon.cs260.click)
 ## Helpful links
