@@ -364,7 +364,7 @@ console.log(count, type);
 // OUTPUT 1, animals
 ```
 Use in React
-```
+```js
 function Clicker({ initialCount }) {
   const [count, updateCount] = React.useState(initialCount);
   return <div onClick={() => updateCount(count + 1)}>Click count: {count}</div>;
@@ -401,7 +401,7 @@ a.sort(function (v1, v2) {
 a.sort((v1, v2) => v1 - v2);
 ```
 
-```
+```js
 function App() {
   const [count, setCount] = React.useState(0);
 
