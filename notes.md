@@ -3,7 +3,7 @@
 
 ### In the following code, what does the link element do?
 It links an external resource (usually a CSS file) to the HTML document. Example: 
-```
+```html      
 <link rel="stylesheet" href="styles.css">
 ```
 applies styles from styles.css to the page.
@@ -50,13 +50,13 @@ internal spacing, unlike margin which affects the space outside the element.
 Arrow functions are a compact function syntax. (a, b) => a + b means a function with parameters a and b that
 returns a+b.
 Examples:
-```
+```js
 const add = (a, b) => a + b;
 const greet = name => `Hi ${name}`;
 const square = x => { return x * x; } // block form
 ```
 Note: arrow functions do not bind their own 'this' and are not suitable as constructors.
-```
+```js
 const greet = (name) => {
  return 'Hello, ' + name;
 }
@@ -64,13 +64,13 @@ console.log(greet('Amur'));
 ```
 This defines an arrow function named greet that takes one argument name and returns a greeting
 string.
-```
+```js
 const square = x => x * x;
 console.log(square(5));
 ```
 Here, square takes a number and returns its square. The arrow syntax allows concise one-line
 functions.
-```
+```js
 const add = (a, b) => a + b;
 console.log(add(2, 3));
 ```
@@ -79,20 +79,20 @@ especially with array methods.
 
 ### What does the following code using map with an array output?
 map() transforms every element of an array and returns a new array without mutating the original.
-```
+```js
 Examples:
 const nums = [1,2,3];
 const doubled = nums.map(n => n * 2); // [2,4,6]
 const names = ['Amy','Bob'];
 const greetings = names.map(n => `Hi ${n}`); // ['Hi Amy','Hi Bob']
 ```
-```
+```js
 const numbers = [1, 2, 3];
 const doubled = numbers.map(n => n * 2);
 console.log(doubled);
 ```
 Output: [2, 4, 6] — The map() function applies a transformation to each element, returning a new array.
-```
+```js
 const students = [{name: 'Amy'}, {name: 'Ben'}];
 const names = students.map(s => s.name);
 console.log(names);
@@ -105,7 +105,7 @@ Typical pattern:
 const btn = document.getElementById('btn');
 btn.addEventListener('click', () => console.log('Clicked!'));
 Behavior: When user clicks the element with id 'btn', the callback runs and prints 'Clicked!'.
-```
+```js
 const button = document.getElementById('myButton');
 button.addEventListener('click', () => {
  alert('Button clicked!');
@@ -114,14 +114,14 @@ button.addEventListener('click', () => {
 getElementById() selects the HTML element with the specified id. addEventListener() waits for an event
 (like a click) and runs the provided function when triggered. It doesn’t execute immediately—it listens
 for the event.
-```
+```js
 const input = document.getElementById('username');
 input.addEventListener('change', () => {
  console.log('Input changed');
 });
 ```
 Listens for a change in an input field and logs a message when the value changes.
-```
+```js
 const form = document.getElementById('loginForm');
 form.addEventListener('submit', e => {
  e.preventDefault();
@@ -129,7 +129,7 @@ form.addEventListener('submit', e => {
 });
 ```
 Prevents form refresh on submit and handles the event using JS.
-```
+```js
 const heading = document.getElementById('title');
 heading.style.color = 'green';
 ```
@@ -145,7 +145,7 @@ By default, the HTML span element has a default CSS display property value of:
 inline
 
 ### How would you use CSS to change all the div elements to have a background color of red?
-```
+```html
 div { background-color: red; }
 ```
 
@@ -165,7 +165,7 @@ project/
  styles.css
 If using a framework, the image may need to be in a 'public' or 'static' folder so it is served directly.
 
-```
+```html
 <a href="https://www.example.com">
  <img src="images/photo.jpg" alt="Example image">
 </a>
@@ -179,7 +179,7 @@ project-folder/
 ■ ■■■ photo.jpg
 ```
 You can also use an external image URL:
-```
+```html
 <a href="https://openai.com">
  <img src="https://example.com/image.png" alt="External image">
 </a>
@@ -205,27 +205,27 @@ Padding increases size inside border; margin creates space between elements.
 
 ### Given the following HTML, what CSS would you use to set the text "trouble" to green and leave the "double" text unaffected?
 Given 
-```\
+```html
 <p><span class="trouble">trouble</span> double</p>
 ```
 use
-```
+```html
 .trouble { color: green; }
 ```
 
 ### What will the following code output when executed using a for loop and console.log?
-```
+```js
 for (let i = 0; i < 3; i++) { console.log(i); }
 ```
 This initializes i=0, checks i<3 each loop, runs body and increments i++ after each iteration. Output 
 
 ### How would you use JavaScript to select an element with the id of “byu” and change the text color of that element to green?
 Option 1 (direct):
-```
+```js
 document.getElementById('byu').style.color = 'green';
 ```
 Option 2 (variable):
-```
+```js
 const byu = document.getElementById('byu');
 byu.style.color = 'green';
 ```
