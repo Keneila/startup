@@ -575,6 +575,7 @@ form.addEventListener("submit", (e) => {
 ```
 ex 2
 ```html
+
 <!-- how to set up html file -->
 <!DOCTYPE html>
 <html lang="en">
@@ -606,6 +607,7 @@ ex 2
 ```
 ex 3 css 
 ```html
+
 body{
     font-family:Arial, Helvetica, sans-serif;
     padding: 5%;
