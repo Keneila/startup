@@ -604,6 +604,24 @@ ex 2
 <!-- how to set up html -->
 </html>
 ```
+ex 3 css 
+```html
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 5%;
+}
+
+select {
+  background-color: yellowgreen; /* changes the box color */
+  color: black;                /* keeps the text readable */
+  border: 1px solid gray;      /* optional: makes it look nicer */
+  padding: 5px;
+  border-radius: 5px;
+}
+select:focus {
+  background-color: skyblue;
+}
+```
 
 ## Dont want to delete any of this yet and am leaving it at the end of my notes for now
 [My startup - Simon](https://simon.cs260.click)
