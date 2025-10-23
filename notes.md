@@ -373,6 +373,13 @@ function Clicker({ initialCount }) {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Clicker initialCount={3} />);
 ```
+Javascript type and construct
+Variables are declared using either the let or const keyword. let allows you to change the value of the variable while const will cause an error if you attempt to change it.
+```js
+let x = 1;
+
+const y = 2;
+```
 | Type       | Use                                                                                    | Example                  |
 | ---------- | -------------------------------------------------------------------------------------- | ------------------------ |
 | `Object`   | A collection of properties represented by name-value pairs. Values can be of any type. | `{a:3, b:'fish'}`        |
