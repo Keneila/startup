@@ -550,6 +550,61 @@ console.log(obj, json, objFromJson);
 // {a: 2, b: 'crockford'}
 ```
 
+Exercise 1:
+```js
+// how to get a form from the html file
+const form = document.getElementById('emailForm')
+// how to get a message from html file
+const message = document.getElementById('message')
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault()
+  const email = document.getElementById('email').value;
+  if (email.includes('@')){
+    message.textContent = "Eamil accepted";
+    message.style.color = 'green'
+  }
+  else{
+    // how to set a message to "Please, enter valid email"
+      message.textContent = "Please, enter valid email"
+    // how to get a red color to the message
+      message.style.color = 'red'
+  }
+  
+})
+```
+ex 2
+```html
+<!-- how to set up html file -->
+<!DOCTYPE html>
+<html lang="en">
+    <!-- put head here -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Click Counter</title>
+        <!-- how to make a link to the style.css -->
+        <link rel="stylesheet" href="style.css">
+    <!-- put head here -->
+    </head>
+    <body>
+        <!-- how to make a form with id counterForm-->
+        <form type="click" id="counterForm">
+            <p id="number">0</p>
+            <button type="button" id="plus">+</button>
+            <button type="button" id="minus">-</button>
+            <button type="button" id="minus5">-5</button>
+            <!-- make +5 button -->
+            <button type="button" id="plus5">+5</button>
+        <!-- form goes here -->
+        </form>
+        <!-- how to initilize javascript file here -->
+        <script src="counter.js"></script>
+    </body>
+<!-- how to set up html -->
+</html>
+```
+
 ## Dont want to delete any of this yet and am leaving it at the end of my notes for now
 [My startup - Simon](https://simon.cs260.click)
 ## Helpful links
