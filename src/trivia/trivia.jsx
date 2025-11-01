@@ -10,6 +10,7 @@ export function Trivia(props) {
   const [ans2, setAns2] = React.useState('');
   const [ans3, setAns3] = React.useState('');
   const [ans4, setAns4] = React.useState('');
+  const [score, setScore] = React.useState(0);
 
   React.useEffect(() => {
     setQuestion('Which is the capital of France?');
@@ -17,22 +18,28 @@ export function Trivia(props) {
     setAns2('London');
     setAns3('Berlin');
     setAns4('Madrid');
-  }, []);
+    shuffleAnswers();
+  }, [change]);
 
   const buttons = new Map();
   const [order, setOrder] = React.useState([]);
   const number = 0;
   const correct = 0;
+  const change = 0;
 
   async function onAnswer(buttonPos) {
     number += 1;
     if (order[buttonPos] === correctAns) {
       correct += 1;
     }
+    setScore((correct / number) * 100);
     await highlight(buttonPos);
-    loadNextQuestion();
+    change += 1;
   }
 
+  async function highlight(buttonPos) {
+
+  }
 
   function shuffleAnswers(){
     const answers = [correctAns, ans2, ans3, ans4];
@@ -43,15 +50,16 @@ export function Trivia(props) {
     setOrder(answers);
   }
 
-  function restart() {
-    saveScore((correct / number) * 100);
+  async function restart() {
+    await saveScore(score);
     number = 0;
     correct = 0;
-    loadNextQuestion();
+    setScore(0);
+    change += 1;
   }
 
 
-  function saveScore(score){
+  async function saveScore(score){
     const triviaScore = {
       studentName: userName,
       subject: 'Geography',
