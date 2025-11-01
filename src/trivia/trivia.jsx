@@ -12,29 +12,34 @@ export function Trivia(props) {
   const [ans4, setAns4] = React.useState('');
   const [score, setScore] = React.useState(0);
 
+  const [button1, setButton1] = React.useState('');
   React.useEffect(() => {
     setQuestion('Which is the capital of France?');
     setCorrectAns('Paris');
     setAns2('London');
     setAns3('Berlin');
     setAns4('Madrid');
-    shuffleAnswers();
-  }, [change]);
+  }, []);
 
   const buttons = new Map();
-  const [order, setOrder] = React.useState([]);
-  const number = 0;
-  const correct = 0;
-  const change = 0;
+  const [order, setOrder] = React.useState([correctAns, ans2, ans3, ans4]);
+
+  React.useEffect(() => {
+    shuffleAnswers();
+  }, [correctAns, ans2, ans3, ans4]);
+
+  const [number, setNumber] = React.useState(0);
+  const [correct, setCorrect] = React.useState(0);
+  const [change, setChange] = React.useState(0);
 
   async function onAnswer(buttonPos) {
-    number += 1;
+    setNumber(prevNumber => prevNumber + 1);
     if (order[buttonPos] === correctAns) {
-      correct += 1;
+      setCorrect(prevCorrect => prevCorrect + 1);
     }
     setScore((correct / number) * 100);
     await highlight(buttonPos);
-    change += 1;
+    setChange(prevChange => prevChange + 1);
   }
 
   async function highlight(buttonPos) {
@@ -47,7 +52,7 @@ export function Trivia(props) {
       const j = Math.floor(Math.random() * (i + 1));
       [answers[i], answers[j]] = [answers[j], answers[i]];
     }
-    setOrder(answers);
+    setOrder([answers[0], answers[1], answers[2], answers[3]]);
   }
 
   async function restart() {
@@ -89,12 +94,6 @@ export function Trivia(props) {
     }
     localStorage.setItem('scores', JSON.stringify(scores));
   }
-
-
-
-
-
-
 
   return (
     <div>
