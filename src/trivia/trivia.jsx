@@ -20,7 +20,36 @@ export function Trivia(props) {
   }, []);
 
   const buttons = new Map();
-  const [order, setOrder] = React.useState(['A', 'B', 'C', 'D']);
+  const [order, setOrder] = React.useState([]);
+  const number = 0;
+  const correct = 0;
+
+  async function onAnswer(buttonPos) {
+    number += 1;
+    if (order[buttonPos] === correctAns) {
+      correct += 1;
+    }
+    await highlight(buttonPos);
+    loadNextQuestion();
+  }
+
+
+  function shuffleAnswers(){
+    const answers = [correctAns, ans2, ans3, ans4];
+    for (let i = answers.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [answers[i], answers[j]] = [answers[j], answers[i]];
+    }
+    setOrder(answers);
+  }
+
+  function restart() {
+    saveScore((correct / number) * 100);
+    number = 0;
+    correct = 0;
+    loadNextQuestion();
+  }
+
 
   function saveScore(score){
     const triviaScore = {
@@ -52,21 +81,6 @@ export function Trivia(props) {
     }
     localStorage.setItem('scores', JSON.stringify(scores));
   }
-
-  function shuffleAnswers(){
-
-  }
-
-  function restart() {
-
-  }
-
-
-
-
-
-
-
 
 
 
