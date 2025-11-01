@@ -1,3 +1,5 @@
+
+
 class EventMessage {
     constructor(from, details) {
         this.from = from;
@@ -13,7 +15,7 @@ class TriviaNotif {
         setInterval(() => {
             const score = Math.floor(Math.random() * 101);
             const studentName = "Student 1";
-            const subject = "Social Studies Trivia";
+            const subject = "Social Studies";
             this.broadcastEvent(studentName, { studentName, subject, score });
         }, 10000);
     }
@@ -37,3 +39,6 @@ class TriviaNotif {
         this.handlers.forEach(handler => handler(event));
     }
 }
+
+const TriviaNotifier = new TriviaNotif();
+export { TriviaNotifier };

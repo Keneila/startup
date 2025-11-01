@@ -1,9 +1,36 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { TriviaNotifier } from './triviaNotif';
 
-export function Parent() {
+export function Parent(props) {
+  const userName = props.userName || 'Educator';
 
+  const [events, setEvents] = React.useState([]);
 
+  React.useEffect(() => {
+    TriviaNotifier.addHandler(handleTriviaEvent);
+    return () => {
+      TriviaNotifier.removeHandler(handleTriviaEvent);
+    };
+  }, []);
+
+  function handleTriviaEvent(event) {
+    setEvents((prevEvents) => [event, ...prevEvents]);
+  }
+
+  function createEventAlerts() {
+    const alerts = [];
+    for (const [index, event] of events.entries()) {
+      let message = `${event.details.studentName} scored ${event.details.score}% on a ${event.details.subject} quiz`;
+
+      alerts.push(
+        <div key={index} className="alert alert-success" role="alert">
+          {message}
+        </div>
+      );
+    }
+    return alerts;
+  }
 
   return (
     <div>
@@ -25,11 +52,8 @@ export function Parent() {
 <main>
       <div className="container">
         <h3> Updates</h3>
-        <div className="alert alert-success" role="alert">
-        Student 1 completed Math Quiz 1 with a score of 100%
-        </div>
-        <div className="alert alert-danger" role="alert">
-        Student 2 completed Literature Quiz 1 with a score of 50%
+        <div> 
+          {createEventAlerts()}
         </div>
       </div>
 
