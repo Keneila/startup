@@ -23,7 +23,7 @@ export default function App() {
               <Route path="/child" element={<Child />} />
               <Route path="/parent" element={<Parent userName="Educator"/>} />
               <Route path="/register" element={<Register />} />
-              <Route path="/trivia" element={<Trivia />} />
+              <Route path="/trivia" element={<Trivia userName="Student 1" />} />
               <Route path="/student" element={<Student />} />
               <Route path='*' element={<NotFound />} />
             </Routes>
