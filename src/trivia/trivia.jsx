@@ -18,6 +18,20 @@ export function Trivia() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   return (
     <div>
     <div className="container">
