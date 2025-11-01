@@ -47,7 +47,7 @@ export function Parent(props) {
     <div>
         <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
         <h1 className="d-flex align-items-center  mb-2 mb-md-0 text-dark text-decoration-none" id="logo">RAD Education</h1>
-        <h3 className="mb-md-0 menu"> Welcome, Educator</h3>
+        <h3 className="mb-md-0 menu"> Welcome, {props.userName}</h3>
         <nav >
           <menu className="nav nav-tabs col-md-auto mb-2 justify-content-center mb-md-0">
             <li><NavLink to="/parent" className="nav-link px-2 link-dark">Student 1</NavLink></li>
