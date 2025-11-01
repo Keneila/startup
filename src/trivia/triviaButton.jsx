@@ -1,9 +1,9 @@
 import React from 'react';
 
 export const TriviaButton = React.forwardRef(({ position, onAnswer, answer, answerTrue, done= false}, ref) => {
-
+    const [doneState, setDoneState] = React.useState(done);
     function highlightCorrect(){
-        if (done){
+        if (doneState){
         if(answerTrue === answer){
             return 'btn btn-success';
         } else {
@@ -14,10 +14,20 @@ export const TriviaButton = React.forwardRef(({ position, onAnswer, answer, answ
         }
     }
 
+
+    React.useImperativeHandle(ref, () => ({
+    async press(delayMs = 100) {
+      setDoneState(true);
+    },
+    async finish() {
+      setDoneState(false);
+    }
+  }));
+
   return (
     <button
       ref={ref}
-      className={highlightCorrect()}
+      className={`${doneState ? highlightCorrect() : 'btn btn-outline-secondary'}`}
       onClick={() => onAnswer(position)}
     > {answer}</button>
   );
