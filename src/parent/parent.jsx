@@ -15,16 +15,27 @@ export function Parent(props) {
   }, []);
 
   function handleTriviaEvent(event) {
-    setEvents((prevEvents) => [event, ...prevEvents]);
+    setEvents((prevEvents) => {
+      let newEvents = [event, ...prevEvents];
+      if(newEvents.length > 3) {
+        newEvents = newEvents.slice(0,3);
+      }
+      return newEvents;
+    });
   }
 
   function createEventAlerts() {
     const alerts = [];
     for (const [index, event] of events.entries()) {
       let message = `${event.details.studentName} scored ${event.details.score}% on a ${event.details.subject} quiz`;
-
+      let col;
+      if (event.details.score >= 70) {
+        col = 'success';
+      } else {
+        col = 'danger';
+      }
       alerts.push(
-        <div key={index} className="alert alert-success" role="alert">
+        <div key={index} className={`alert alert-${col}`} role="alert">
           {message}
         </div>
       );
