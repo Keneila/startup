@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { TriviaNotifier } from '../parent/triviaNotif';
+import { TriviaButton } from './triviaButton';
 
 export function Trivia(props) {
   const userName = props.userName || 'Player';
@@ -11,23 +12,19 @@ export function Trivia(props) {
   const [ans3, setAns3] = React.useState('');
   const [ans4, setAns4] = React.useState('');
   const [score, setScore] = React.useState(0);
+  const [order, setOrder] = React.useState([]);
+
 
   const [button1, setButton1] = React.useState('');
   React.useEffect(() => {
     setQuestion('Which is the capital of France?');
     setCorrectAns('Paris');
-    setAns2('London');
-    setAns3('Berlin');
-    setAns4('Madrid');
-  }, []);
+    //shuffleAnswers(A,B,C,D);
+    setOrder(['Paris', 'London', 'Berlin', 'Madrid']);
+  }, [correctAns]);
 
   const buttons = new Map();
-  const [order, setOrder] = React.useState([correctAns, ans2, ans3, ans4]);
-
-  React.useEffect(() => {
-    shuffleAnswers();
-  }, [correctAns, ans2, ans3, ans4]);
-
+  let done = false;
   const [number, setNumber] = React.useState(0);
   const [correct, setCorrect] = React.useState(0);
   const [change, setChange] = React.useState(0);
@@ -38,16 +35,20 @@ export function Trivia(props) {
       setCorrect(prevCorrect => prevCorrect + 1);
     }
     setScore((correct / number) * 100);
+    done = true;
     await highlight(buttonPos);
+    done = false;
     setChange(prevChange => prevChange + 1);
   }
 
   async function highlight(buttonPos) {
-
+    setInterval(() => {
+    
+    }, 1000);
   }
 
-  function shuffleAnswers(){
-    const answers = [correctAns, ans2, ans3, ans4];
+  function shuffleAnswers(A,B,C,D){
+    const answers = [A,B,C,D];
     for (let i = answers.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [answers[i], answers[j]] = [answers[j], answers[i]];
@@ -95,6 +96,15 @@ export function Trivia(props) {
     localStorage.setItem('scores', JSON.stringify(scores));
   }
 
+  buttons.set(0, {position: 0, answer: order[0], ref: React.useRef()});
+  buttons.set(1, {position: 1, answer: order[1], ref: React.useRef()});
+  buttons.set(2, {position: 2, answer: order[2], ref: React.useRef()});
+  buttons.set(3, {position: 3, answer: order[3], ref: React.useRef()});
+
+  const buttonArray = Array.from(buttons, ([key, value]) => {
+    return <TriviaButton position={value.position} ref = {value.ref} answer={value.answer} answerTrue={correctAns} onAnswer={() => onAnswer(value.position)} done={true} />; 
+  });
+
   return (
     <div>
     <div className="container">
@@ -116,36 +126,28 @@ export function Trivia(props) {
         <table>
           <tr>
             <td>
-              <button className="btn btn-outline-secondary">
-                A. {correctAns}
-              </button>
+              {buttonArray[0]}
             </td>
             <td>
-              <button className="btn btn-outline-secondary">
-               B. {ans2}
-              </button>
+              {buttonArray[1]}
             </td>
           </tr>
           <tr>
             <td>
-              <button className="btn btn-outline-secondary">
-               C. {ans3}
-              </button>
+              {buttonArray[2]}
             </td>
             <td>
-              <button className="btn btn-outline-secondary">
-               D. {ans4}
-              </button>
+              {buttonArray[3]}
             </td>
           </tr>
         </table>
       </div>
       <div className="d-flex justify-content-center mt-4 triv">
         <div className="score">
-        {score}%
+        {score.toFixed(0)}%
         </div>
         <div>
-        <button className="btn btn-primary mb-4">Restart</button>
+        <Button className="btn btn-primary mb-4" onClick={() => restart()}> Restart</Button>
         </div>
       </div>
       </div>

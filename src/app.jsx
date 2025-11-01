@@ -20,7 +20,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/child" element={<Child />} />
+              <Route path="/child" element={<Child userName="Student 1" />} />
               <Route path="/parent" element={<Parent userName="Educator"/>} />
               <Route path="/register" element={<Register />} />
               <Route path="/trivia" element={<Trivia userName="Student 1" />} />
