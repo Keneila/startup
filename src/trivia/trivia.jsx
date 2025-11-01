@@ -57,10 +57,10 @@ export function Trivia(props) {
 
   async function restart() {
     await saveScore(score);
-    number = 0;
-    correct = 0;
+    setNumber(0);
+    setCorrect(0);
     setScore(0);
-    change += 1;
+    setChange(prevChange => prevChange + 1);
   }
 
 
@@ -142,7 +142,7 @@ export function Trivia(props) {
       </div>
       <div className="d-flex justify-content-center mt-4 triv">
         <div className="score">
-        ---
+        {score}%
         </div>
         <div>
         <button className="btn btn-primary mb-4">Restart</button>
