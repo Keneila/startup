@@ -2,6 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export function Child(props) {
+
+  function logout() {
+    localStorage.removeItem('userName');
+    props.onLogout();
+  }
+
   return (
     <div>
     <div className="container">
@@ -9,7 +15,7 @@ export function Child(props) {
         <h1 className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" id="logo">RAD Education</h1>
         <h3 className="menu"> Welcome {props.userName}</h3>
         <div className="text-end">
-            <NavLink to="/" className="btn btn-outline-primary me-2">Logout</NavLink>
+            <NavLink to="/" className="btn btn-outline-primary me-2" onClick={() => logout()}>Logout</NavLink>
           </div>
       </header>
     </div>

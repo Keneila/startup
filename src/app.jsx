@@ -35,8 +35,8 @@ export default function App() {
                   onAuthChange(loginUserName, AuthState.Authenticated);
             }}
             />} />
-              <Route path="/child" element={<Child userName={userName} />} />
-              <Route path="/parent" element={<Parent userName={userName} />} />
+              <Route path="/child" element={<Child userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />} />
+              <Route path="/parent" element={<Parent userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />} />
               <Route path="/register" element={<Register 
                 userName={userName}
                 authState={authState}
@@ -48,7 +48,7 @@ export default function App() {
                   onAuthChange(loginUserName, AuthState.Authenticated);
             }}
             />} />
-              <Route path="/trivia" element={<Trivia userName={userName} />} />
+              <Route path="/trivia" element={<Trivia userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)}/>} />
               <Route path="/student" element={<Student
                 userName={userName}
                 authState={authState}

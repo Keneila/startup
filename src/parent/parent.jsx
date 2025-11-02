@@ -43,6 +43,11 @@ export function Parent(props) {
     return alerts;
   }
 
+  function logout() {
+    localStorage.removeItem('userName');
+    props.onLogout();
+  }
+
   return (
     <div>
         <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
@@ -56,7 +61,7 @@ export function Parent(props) {
           </menu>
         </nav>
         <div className="text-end">
-           <NavLink to="/" className="btn btn-outline-primary me-2">Logout</NavLink>
+           <NavLink to="/" className="btn btn-outline-primary me-2" onClick={() => logout()}>Logout</NavLink>
         </div>
         <hr />
       </header>

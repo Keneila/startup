@@ -98,6 +98,11 @@ export function Trivia(props) {
     localStorage.setItem('scores', JSON.stringify(scores));
   }
 
+  function logout() {
+    localStorage.removeItem('userName');
+    props.onLogout();
+  }
+
   buttons.set(0, {position: 0, answer: order[0], ref: React.useRef()});
   buttons.set(1, {position: 1, answer: order[1], ref: React.useRef()});
   buttons.set(2, {position: 2, answer: order[2], ref: React.useRef()});
@@ -114,7 +119,7 @@ export function Trivia(props) {
             <h1 className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" id="logo">RAD Education</h1>
             <h3 className="menu"> Welcome {props.userName}</h3>
             <div className="text-end">
-                <NavLink to="/" className="btn btn-outline-primary me-2">Logout</NavLink>
+                <NavLink to="/" className="btn btn-outline-primary me-2" onClick={() => logout()}>Logout</NavLink>
               </div>
           </header>
     </div>
