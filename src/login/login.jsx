@@ -23,9 +23,9 @@ export function Login() {
       <div className="container justify-content-center mb-4 login">
       <form method="get" action="/parent">
           <div className="mb-3">
-              <label className="form-label">Email address</label>
-              <input className="form-control" type="text" placeholder="your@email.com" />
-          </div>
+                    <label className="form-label">Username</label>
+                    <input className="form-control" type="text" placeholder="Username" />
+                  </div>
           <div className="mb-3">
               <label className="form-label">Password</label>
               <input className="form-control" type="password" placeholder="Password" />
