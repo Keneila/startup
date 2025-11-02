@@ -19,15 +19,20 @@ export function Trivia(props) {
   }, [correctAns]);
 
   const buttons = new Map();
-  const [number, setNumber] = React.useState(0);
+  const [number, setNumber] = React.useState(1);
   const [correct, setCorrect] = React.useState(0);
-
+  let n = 0;
+  let c = 0;
   async function onAnswer(buttonPos) {
     setNumber(number + 1);
+    n = number + 1;
     if (order[buttonPos] === correctAns) {
       setCorrect(correct + 1);
+      c = correct + 1;
+    } else {
+      c = correct;
     }
-    setScore((correct / number) * 100);
+    setScore((c / n) * 100);
     await highlight(buttonPos);
   }
 
