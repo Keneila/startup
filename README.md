@@ -92,7 +92,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [X] **All functionality implemented or mocked out** - the trivia game is fully mocked out and saves its scores, and is prepped for 3rd party input. The Weclome, User text uses the current username.
+- [X] **All functionality implemented or mocked out** - the trivia game is fully mocked out and saves its scores, and is prepped for 3rd party input. The Welcome, User text uses the current username.
    Register, login, and logout are mocked out and use local storage. Students are saved connected to Educators in the database. The Parent page has mocked up score alerts for Websocket.
 - [X] **Hooks** - Yes, I used hooks, useState and useEffect, etc.
 
