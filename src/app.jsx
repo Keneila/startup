@@ -31,7 +31,10 @@ export default function App() {
                   setAuthState(authState);
                   setUserName(userName);
                 }}
-                />} />
+                onLogin={(loginUserName) => {
+                  onAuthChange(loginUserName, AuthState.Authenticated);
+            }}
+            />} />
               <Route path="/child" element={<Child userName={userName} />} />
               <Route path="/parent" element={<Parent userName={userName} />} />
               <Route path="/register" element={<Register 
@@ -46,12 +49,17 @@ export default function App() {
             }}
             />} />
               <Route path="/trivia" element={<Trivia userName={userName} />} />
-              <Route path="/student" element={<Student userName={userName}
+              <Route path="/student" element={<Student
+                userName={userName}
                 authState={authState}
                 onAuthChange={(userName, authState) => {
                   setAuthState(authState);
                   setUserName(userName);
-                }} />} />
+                }}
+                onLogin={(loginUserName) => {
+                  onAuthChange(loginUserName, AuthState.Authenticated);
+            }}
+            />} />
               <Route path='*' element={<NotFound />} />
             </Routes>
 

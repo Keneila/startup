@@ -105,7 +105,7 @@ export function Register(props) {
                   <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#educator" type="button" role="tab" aria-controls="educator" aria-selected="true" onClick={() => switchTabEducator(event)}>Educator</button>
                 </li>
                 <li className="nav-item" role="presentation">
-                  <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#student" type="button" role="tab" aria-controls="student" aria-selected="false" formaction="/child" onClick={() => switchTabStudent(event)}>Student</button>
+                  <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#student" type="button" role="tab" aria-controls="student" aria-selected="false" formction="/child" onClick={() => switchTabStudent(event)}>Student</button>
                 </li>
               </ul>
               <div className="tab-content" id="myTabContent">
