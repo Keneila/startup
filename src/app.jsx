@@ -40,7 +40,11 @@ export default function App() {
                 onAuthChange={(userName, authState) => {
                   setAuthState(authState);
                   setUserName(userName);
-                }}/>} />
+                }}
+                onLogin={(loginUserName) => {
+                  onAuthChange(loginUserName, AuthState.Authenticated);
+            }}
+            />} />
               <Route path="/trivia" element={<Trivia userName={userName} />} />
               <Route path="/student" element={<Student userName={userName}
                 authState={authState}

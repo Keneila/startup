@@ -2,7 +2,57 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-export function Register() {
+export function Register(props) {
+  const [userName, setUserName] = React.useState(props.userName);
+  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  async function createMainUser() {
+    localStorage.setItem('userName', userName);
+    const user = { mainName: userName, email: email, students: [] };
+
+    let users = [];
+    const usersText = localStorage.getItem('users');
+    if (usersText) {
+      users = JSON.parse(usersText);
+    }
+    let found = false;
+    for (const [i, prevUser] of users.entries()) {
+      if (prevUser.email === email) {
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      users.push(user);
+    }
+    localStorage.setItem('users', JSON.stringify(users));
+
+    props.onLogin(userName);
+  }
+
+  async function createStudent() {
+    localStorage.setItem('userName', userName);
+    const user = { mainName: userName, email: email};
+
+    let users = [];
+    const usersText = localStorage.getItem('users');
+    if (usersText) {
+      users = JSON.parse(usersText);
+    }
+    let found = false;
+    for (const [i, prevUser] of users.entries()) {
+      if (prevUser.email === email) {
+        found = true;
+        prevUser.students.push(userName);
+        break;
+      }
+    }
+    localStorage.setItem('users', JSON.stringify(users));
+
+    props.onLogin(userName);
+  }
+
   function switchTabEducator(event) {
             const tabs = document.querySelectorAll('.nav-link');
             tabs.forEach(tab => tab.classList.remove('active'));
@@ -62,33 +112,33 @@ export function Register() {
                 <div className="tab-pane fade show active" id="educator" role="tabpanel" aria-labelledby="home-tab">
                   <div className="mb-3">
                     <label className="form-label">Email address</label>
-                    <input className="form-control" type="text" placeholder="your@email.com" />
+                    <input className="form-control" type="text" placeholder="your@email.com" value={email} onChange={(e) => setEmail(e.target.value)}  />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Username</label>
-                    <input className="form-control" type="text" placeholder="Username" />
+                    <input className="form-control" type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)}  />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Password</label>
-                    <input className="form-control" type="password" placeholder="Password" />
+                    <input className="form-control" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}  />
                   </div>
-                  <button className="btn btn-primary" type="submit">Register</button>
+                  <Button variant='primary' onClick={() => createMainUser()} disabled={!userName || !password || !email} type='submit'>Register</Button>
                   <code></code>
                 </div>
                 <div className="tab-pane fade" id="student" role="tabpanel" aria-labelledby="profile-tab">
                   <div className="mb-3">
                     <label className="form-label">Educator's Email address</label>
-                    <input className="form-control" type="text" placeholder="educators@email.com" />
+                    <input className="form-control" type="text" placeholder="educators@email.com" value={email} onChange={(e) => setEmail(e.target.value)}/>
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Username</label>
-                    <input className="form-control" type="text" placeholder="Username" />
+                    <input className="form-control" type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)}/>
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Password</label>
-                    <input className="form-control" type="password" placeholder="Password" />
+                    <input className="form-control" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                   </div>
-                  <button className="btn btn-primary" type="submit" formaction="/child">Register</button>
+                  <Button variant='primary' onClick={() => createStudent()} disabled={!userName || !password || !email} type="submit" formaction="/child">Register</Button>
                   <code></code>
                 </div>
                 </div>
