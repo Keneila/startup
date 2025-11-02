@@ -1,4 +1,5 @@
 import React from 'react';
+import { AuthState } from './login/authState';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
@@ -12,6 +13,10 @@ import { Trivia } from './trivia/trivia.jsx';
 import { Student } from './student/student.jsx';
 
 export default function App() {
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
+
   return (
     <BrowserRouter>
       <div className="body">
@@ -19,12 +24,30 @@ export default function App() {
 
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/child" element={<Child userName="Student 1" />} />
-              <Route path="/parent" element={<Parent userName="Educator"/>} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/trivia" element={<Trivia userName="Student 1" />} />
-              <Route path="/student" element={<Student />} />
+              <Route path="/login" element={<Login 
+                userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }}
+                />} />
+              <Route path="/child" element={<Child userName={userName} />} />
+              <Route path="/parent" element={<Parent userName={userName} />} />
+              <Route path="/register" element={<Register 
+                userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }}/>} />
+              <Route path="/trivia" element={<Trivia userName={userName} />} />
+              <Route path="/student" element={<Student userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }} />} />
               <Route path='*' element={<NotFound />} />
             </Routes>
 

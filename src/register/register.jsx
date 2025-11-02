@@ -1,7 +1,34 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 export function Register() {
+  function switchTabEducator(event) {
+            const tabs = document.querySelectorAll('.nav-link');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const which = document.getElementById('educator');
+            which.classList.add('show','active');
+            const other = document.getElementById('student');
+            other.classList.remove('show','active');
+           
+        }
+
+  function switchTabStudent(event) {
+            const tabs = document.querySelectorAll('.nav-link');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const which = document.getElementById('student');
+            which.classList.add('show','active');
+            const other = document.getElementById('educator');
+            other.classList.remove('show','active');
+           
+        }
+
+
+
   return (
     <div>
               <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
@@ -25,10 +52,10 @@ export function Register() {
 
               <ul className="nav nav-tabs mb-3" id="myTab" role="tablist">
                 <li className="nav-item" role="presentation">
-                  <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#educator" type="button" role="tab" aria-controls="educator" aria-selected="true">Educator</button>
+                  <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#educator" type="button" role="tab" aria-controls="educator" aria-selected="true" onClick={() => switchTabEducator(event)}>Educator</button>
                 </li>
                 <li className="nav-item" role="presentation">
-                  <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#student" type="button" role="tab" aria-controls="student" aria-selected="false" formaction="/child">Student</button>
+                  <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#student" type="button" role="tab" aria-controls="student" aria-selected="false" formaction="/child" onClick={() => switchTabStudent(event)}>Student</button>
                 </li>
               </ul>
               <div className="tab-content" id="myTabContent">
