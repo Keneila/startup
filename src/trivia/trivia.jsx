@@ -19,7 +19,7 @@ export function Trivia(props) {
   }, [correctAns]);
 
   const buttons = new Map();
-  const [number, setNumber] = React.useState(1);
+  const [number, setNumber] = React.useState(0);
   const [correct, setCorrect] = React.useState(0);
   let n = 0;
   let c = 0;
