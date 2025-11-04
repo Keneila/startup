@@ -1,6 +1,7 @@
 # CS 260 Notes
 
-
+Trivia API
+URL: https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=multiple
 ### In the following code, what does the link element do?
 It links an external resource (usually a CSS file) to the HTML document. Example: 
 ```html      
