@@ -100,10 +100,11 @@ apiRouter.delete('/auth/logout', async (req, res) => {
 });
 
 // GetScores
-apiRouter.get('/scores', verifyAuth, (_req, res) => {
+apiRouter.get('/scores', verifyAuth, async (_req, res) => {
   userScores = [];
+  const user = await findUser('username', req.body.username);
   for (const score of scores) {
-    if (score.email === req.body.email) {
+    if (score.email === user.email) {
       userScores.push(score);
     }
   }
@@ -160,11 +161,6 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-
-
-app.get('/trivia', (_req, res) => {
-  res.send({ msg: 'Startup service' });
-});
 
 // Default error handler
 app.use(function (err, req, res, next) {

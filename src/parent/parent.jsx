@@ -14,6 +14,16 @@ export function Parent(props) {
     };
   }, []);
 
+  React.useEffect(() => {
+    fetch('/api/scores', {method: 'GET',
+      headers: { 'content-type': 'application/json' },
+       body: JSON.stringify(userName)})
+      .then((response) => response.json())
+      .then((scores) => {
+        setEvents(scores);
+      });
+  }, []);
+
   function handleTriviaEvent(event) {
     setEvents((prevEvents) => {
       let newEvents = [event, ...prevEvents];

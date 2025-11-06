@@ -6,6 +6,7 @@ import { TriviaButton } from './triviaButton';
 
 export function Trivia(props) {
   const userName = props.userName || 'Player';
+  const email = props.email || 'email@example.com';
   const [question, setQuestion] = React.useState('Loading question...');
   const [correctAns, setCorrectAns] = React.useState('');
   const [score, setScore] = React.useState(0);
@@ -69,12 +70,18 @@ export function Trivia(props) {
 
   async function saveScore(score){
     const triviaScore = {
-      studentName: userName,
+      username: userName,
       subject: 'Geography',
-      score: score
+      score: score,
+      email: email
     };
+    await fetch('/api/score', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(triviaScore),
+    });
     TriviaNotifier.broadcastEvent(userName, triviaScore);
-    updateScoreLocal(triviaScore);
+    //updateScoreLocal(triviaScore);
   }
 
   function updateScoreLocal(newScore){
