@@ -6,51 +6,30 @@ export function Register(props) {
   const [userName, setUserName] = React.useState(props.userName);
   const [password, setPassword] = React.useState('');
   const [email, setEmail] = React.useState('');
+  
   async function createMainUser() {
-    localStorage.setItem('userName', userName);
-    const user = { mainName: userName, email: email, students: [] };
-
-    let users = [];
-    const usersText = localStorage.getItem('users');
-    if (usersText) {
-      users = JSON.parse(usersText);
-    }
-    let found = false;
-    for (const [i, prevUser] of users.entries()) {
-      if (prevUser.email === email) {
-        found = true;
-        break;
-      }
-    }
-
-    if (!found) {
-      users.push(user);
-    }
-    localStorage.setItem('users', JSON.stringify(users));
-
-    props.onLogin(userName);
+    await createUser('/auth/e-create');
   }
 
   async function createStudent() {
-    localStorage.setItem('userName', userName);
-    const user = { mainName: userName, email: email};
+    await createUser('/auth/s-create');
+  }
 
-    let users = [];
-    const usersText = localStorage.getItem('users');
-    if (usersText) {
-      users = JSON.parse(usersText);
+  async function createUser(endpoint) {
+    const response = await fetch(endpoint, {
+      method: 'post',
+      body: JSON.stringify({ username: userName, email: email, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (response?.status === 200) {
+      localStorage.setItem('users', JSON.stringify(users));
+      props.onLogin(userName);
+    } else {
+      const body = await response.json();
+      setDisplayError(`⚠ Error: ${body.msg}`);
     }
-    let found = false;
-    for (const [i, prevUser] of users.entries()) {
-      if (prevUser.email === email) {
-        found = true;
-        prevUser.students.push(userName);
-        break;
-      }
-    }
-    localStorage.setItem('users', JSON.stringify(users));
-
-    props.onLogin(userName);
   }
 
   function switchTabEducator(event) {
