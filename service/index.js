@@ -34,6 +34,16 @@ const verifyAuth = async (req, res, next) => {
     res.status(401).send({ msg: 'Unauthorized' });
   }
 };
+
+// setAuthCookie in the HTTP response
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
+}
+
 // CreateAuth a new educator
 apiRouter.post('/auth/e-create', async (req, res) => {
   if (await findUser('username', req.body.username)) {
@@ -43,7 +53,7 @@ apiRouter.post('/auth/e-create', async (req, res) => {
       res.status(409).send({ msg: 'Existing email, aready has a listed Educator' });
     } else {
     const user = await createUser(req.body.username, req.body.email, req.body.password);
-    educators.push(user);
+    await createEducator(req.body.username, req.body.email);
     setAuthCookie(res, user.token);
     res.send({ username: user.username, email: user.email });
     }
@@ -57,7 +67,6 @@ apiRouter.post('/auth/s-create', async (req, res) => {
   } else {
     if (await findUser('email', req.body.email)) {
       const user = await createUser(req.body.username, req.body.email, req.body.password);
-
       setAuthCookie(res, user.token);
       res.send({ username: user.username, email: user.email });
     } else {
@@ -82,6 +91,7 @@ apiRouter.post('/auth/s-login', async (req, res) => {
 
 // GetAuth login an existing educator
 apiRouter.post('/auth/e-login', async (req, res) => {
+  
   const user = await findUser('username', req.body.username);
   const educator = await findEducator('username', req.body.username);
   if (user && educator) {
@@ -91,7 +101,7 @@ apiRouter.post('/auth/e-login', async (req, res) => {
         res.send({ username: user.username, email: user.email });
         return;
     }
-  }
+  } 
   res.status(401).send({ msg: 'Unauthorized' });
 });
 
@@ -138,6 +148,15 @@ async function createUser(username, email, password) {
   return user;
 }
 
+async function createEducator(username, email) {
+  const educator = {
+    username: username,
+    email: email,
+  };
+  educators.push(educator);
+  return educator;
+}
+
 async function findUser(field, value) {
   if (!value) return null;
 
@@ -147,15 +166,6 @@ async function findEducator(field, value) {
   if (!value) return null;
 
   return educators.find((e) => e[field] === value);
-}
-
-// setAuthCookie in the HTTP response
-function setAuthCookie(res, authToken) {
-  res.cookie(authCookieName, authToken, {
-    secure: true,
-    httpOnly: true,
-    sameSite: 'strict',
-  });
 }
 
 

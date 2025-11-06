@@ -3,14 +3,16 @@ import { NavLink } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { AuthState } from './authState';
 import { MessageDialog } from '../register/messageDialog';
+import { useNavigate } from 'react-router-dom';
 
 export function Login(props) {
+  const navigate = useNavigate();
   const [userName, setUserName] = React.useState(props.userName);
   const [password, setPassword] = React.useState('');
   const [displayError, setDisplayError] = React.useState(null);
   
   async function loginUser() {
-    const response = await fetch('/auth/e-login', {
+    const response = await fetch('/api/auth/e-login', {
       method: 'post',
       body: JSON.stringify({ username: userName, password: password }),
       headers: {
@@ -20,6 +22,7 @@ export function Login(props) {
     if (response?.status === 200) {
       localStorage.setItem('userName', userName);
       props.onLogin(userName);
+      navigate('/parent')
     } else {
       const body = await response.json();
       setDisplayError(`⚠ Error: ${body.msg}`);
@@ -45,7 +48,7 @@ export function Login(props) {
     <main>
       <h1 className="login-title">Educator Login</h1>
       <div className="container justify-content-center mb-4 login">
-            <form method="get" action="/parent">
+            <form method="get" >
                 <div className="mb-3">
                     <label className="form-label">Username</label>
                     <input className="form-control" type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)}/>
@@ -54,7 +57,7 @@ export function Login(props) {
                     <label className="form-label">Password</label>
                     <input className="form-control" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
                 </div>
-                 <Button variant='primary' onClick={() => loginUser()} disabled={!userName || !password} type='submit'>Login</Button>
+                 <Button variant='primary' onClick={() => loginUser()} disabled={!userName || !password} >Login</Button>
             </form>
             <div className="border-top m-2"></div>
             <NavLink className="dropdown-item hoverlight" to="/register">New around here? Sign up</NavLink>

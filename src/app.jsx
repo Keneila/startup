@@ -45,7 +45,8 @@ export default function App() {
                   setUserName(userName);
                 }}
                 onLogin={(loginUserName) => {
-                  onAuthChange(loginUserName, AuthState.Authenticated);
+                  setAuthState(AuthState.Authenticated);
+                  setUserName(loginUserName);
             }}
             />} />
               <Route path="/trivia" element={<Trivia userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)}/>} />
@@ -57,6 +58,7 @@ export default function App() {
                   setUserName(userName);
                 }}
                 onLogin={(loginUserName) => {
+
                   onAuthChange(loginUserName, AuthState.Authenticated);
             }}
             />} />
