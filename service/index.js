@@ -24,17 +24,35 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+// CreateAuth a new educator
+apiRouter.post('/auth/e-create', async (req, res) => {
+  if (await findUser('username', req.body.username)) {
+      res.status(409).send({ msg: 'Existing user' });
+  } else {
+    if (await findUser('email', req.body.email)) {
+      res.status(409).send({ msg: 'Existing email, aready has a listed Educator' });
+    } else {
+    const user = await createUser(req.body.username, req.body.email, req.body.password);
+    educators.push(user);
+    setAuthCookie(res, user.token);
+    res.send({ username: user.username, email: user.email });
+    }
+  }
+});
 
-
-// CreateAuth a new user
-apiRouter.post('/auth/create', async (req, res) => {
+// CreateAuth a new student
+apiRouter.post('/auth/s-create', async (req, res) => {
   if (await findUser('username', req.body.username)) {
     res.status(409).send({ msg: 'Existing user' });
   } else {
-    const user = await createUser(req.body.username, req.body.email, req.body.password);
+    if (await findUser('email', req.body.email)) {
+      const user = await createUser(req.body.username, req.body.email, req.body.password);
 
-    setAuthCookie(res, user.token);
-    res.send({ username: user.username, email: user.email });
+      setAuthCookie(res, user.token);
+      res.send({ username: user.username, email: user.email });
+    } else {
+      res.status(409).send({ msg: 'No Educator found' });
+    }
   }
 });
 
