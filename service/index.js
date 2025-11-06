@@ -57,7 +57,7 @@ apiRouter.post('/auth/s-create', async (req, res) => {
 });
 
 // GetAuth login an existing user
-apiRouter.post('/auth/login', async (req, res) => {
+apiRouter.post('/auth/s-login', async (req, res) => {
   const user = await findUser('username', req.body.username);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
@@ -72,6 +72,22 @@ apiRouter.post('/auth/login', async (req, res) => {
   res.status(401).send({ msg: 'Unauthorized' });
 });
 
+// GetAuth login an existing educator
+apiRouter.post('/auth/e-login', async (req, res) => {
+  const user = await findUser('username', req.body.username);
+  const educator = await findEducator('username', req.body.username);
+  if (user && educator) {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      if (await bcrypt.compare(req.body.email, user.email)) {
+        user.token = uuid.v4();
+        setAuthCookie(res, user.token);
+        res.send({ username: user.username, email: user.email });
+        return;
+      }
+    }
+  }
+  res.status(401).send({ msg: 'Unauthorized' });
+});
 
 // DeleteAuth logout a user
 apiRouter.delete('/auth/logout', async (req, res) => {
@@ -128,6 +144,11 @@ async function findUser(field, value) {
   if (!value) return null;
 
   return users.find((u) => u[field] === value);
+}
+async function findEducator(field, value) {
+  if (!value) return null;
+
+  return educators.find((e) => e[field] === value);
 }
 
 // setAuthCookie in the HTTP response
