@@ -8,7 +8,7 @@ const authCookieName = 'token';
 
 let users = [];
 let scores = [];
-let students = [];
+let educators = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -65,6 +65,22 @@ apiRouter.delete('/auth/logout', async (req, res) => {
   res.status(204).end();
 });
 
+// GetScores
+apiRouter.get('/scores', verifyAuth, (_req, res) => {
+  userScores = [];
+  for (const score of scores) {
+    if (score.email === req.body.email) {
+      userScores.push(score);
+    }
+  }
+  res.send(userScores);
+});
+
+// SubmitScore
+apiRouter.post('/score', verifyAuth, (req, res) => {
+  scores.push(req.body);
+  res.send(scores);
+});
 
 // Middleware to verify that the user is authorized to call an endpoint
 const verifyAuth = async (req, res, next) => {
