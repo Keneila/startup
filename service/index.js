@@ -28,25 +28,27 @@ app.use(`/api`, apiRouter);
 
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
-  if (await findUser('email', req.body.email)) {
+  if (await findUser('username', req.body.username)) {
     res.status(409).send({ msg: 'Existing user' });
   } else {
-    const user = await createUser(req.body.email, req.body.password);
+    const user = await createUser(req.body.username, req.body.email, req.body.password);
 
     setAuthCookie(res, user.token);
-    res.send({ email: user.email });
+    res.send({ username: user.username, email: user.email });
   }
 });
 
 // GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
-  const user = await findUser('email', req.body.email);
+  const user = await findUser('username', req.body.username);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
-      user.token = uuid.v4();
-      setAuthCookie(res, user.token);
-      res.send({ email: user.email });
-      return;
+      if (await bcrypt.compare(req.body.email, user.email)) {
+        user.token = uuid.v4();
+        setAuthCookie(res, user.token);
+        res.send({ username: user.username, email: user.email });
+        return;
+      }
     }
   }
   res.status(401).send({ msg: 'Unauthorized' });
