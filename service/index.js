@@ -61,12 +61,10 @@ apiRouter.post('/auth/s-login', async (req, res) => {
   const user = await findUser('username', req.body.username);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
-      if (await bcrypt.compare(req.body.email, user.email)) {
         user.token = uuid.v4();
         setAuthCookie(res, user.token);
         res.send({ username: user.username, email: user.email });
         return;
-      }
     }
   }
   res.status(401).send({ msg: 'Unauthorized' });
@@ -78,12 +76,10 @@ apiRouter.post('/auth/e-login', async (req, res) => {
   const educator = await findEducator('username', req.body.username);
   if (user && educator) {
     if (await bcrypt.compare(req.body.password, user.password)) {
-      if (await bcrypt.compare(req.body.email, user.email)) {
         user.token = uuid.v4();
         setAuthCookie(res, user.token);
         res.send({ username: user.username, email: user.email });
         return;
-      }
     }
   }
   res.status(401).send({ msg: 'Unauthorized' });
