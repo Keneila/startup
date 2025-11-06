@@ -1,12 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { MessageDialog } from './messageDialog';
 
 export function Register(props) {
   const [userName, setUserName] = React.useState(props.userName);
   const [password, setPassword] = React.useState('');
   const [email, setEmail] = React.useState('');
-  
+  const [displayError, setDisplayError] = React.useState(null);
+
   async function createMainUser() {
     await createUser('/auth/e-create');
   }
@@ -123,6 +125,7 @@ export function Register(props) {
                 </div>
         </form>
       </div>
+      <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     
     </main>
     </div>

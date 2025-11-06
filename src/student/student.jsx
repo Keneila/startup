@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { MessageDialog } from '../register/messageDialog';
 
 export function Student(props) {
   const [userName, setUserName] = React.useState(props.userName);
   const [password, setPassword] = React.useState('');
+  const [displayError, setDisplayError] = React.useState(null);
 
   async function loginUser() {
     const response = await fetch('/auth/s-login', {
@@ -55,6 +57,7 @@ export function Student(props) {
       <div className="border-top m-2"></div>
       <NavLink className="dropdown-item hoverlight" to="/register">New around here? Sign up</NavLink>
       </div>
+      <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     </main>
     </div>
   );

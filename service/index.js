@@ -24,6 +24,16 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+
+// Middleware to verify that the user is authorized to call an endpoint
+const verifyAuth = async (req, res, next) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+};
 // CreateAuth a new educator
 apiRouter.post('/auth/e-create', async (req, res) => {
   if (await findUser('username', req.body.username)) {
@@ -113,15 +123,6 @@ apiRouter.post('/score', verifyAuth, (req, res) => {
   res.send(scores);
 });
 
-// Middleware to verify that the user is authorized to call an endpoint
-const verifyAuth = async (req, res, next) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
-  if (user) {
-    next();
-  } else {
-    res.status(401).send({ msg: 'Unauthorized' });
-  }
-};
 
 async function createUser(username, email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
