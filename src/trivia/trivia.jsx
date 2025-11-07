@@ -106,8 +106,16 @@ export function Trivia(props) {
   }
 
   function logout() {
-    localStorage.removeItem('userName');
-    props.onLogout();
+     fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
+      .catch(() => {
+        // Logout failed. Assuming offline
+      })
+      .finally(() => {
+        localStorage.removeItem('userName');
+        props.onLogout();
+      });
   }
 
   buttons.set(0, {position: 0, answer: order[0], ref: React.useRef()});

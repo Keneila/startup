@@ -4,8 +4,16 @@ import { NavLink } from 'react-router-dom';
 export function Child(props) {
 
   function logout() {
-    localStorage.removeItem('userName');
-    props.onLogout();
+     fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
+      .catch(() => {
+        // Logout failed. Assuming offline
+      })
+      .finally(() => {
+        localStorage.removeItem('userName');
+        props.onLogout();
+      });
   }
 
   return (

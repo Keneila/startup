@@ -32,11 +32,18 @@ export default function App() {
                   setUserName(userName);
                 }}
                 onLogin={(loginUserName) => {
-                  onAuthChange(loginUserName, AuthState.Authenticated);
+                  setAuthState(AuthState.Authenticated);
+                  setUserName(loginUserName);
             }}
             />} />
-              <Route path="/child" element={<Child userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />} />
-              <Route path="/parent" element={<Parent userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />} />
+              <Route path="/child" element={<Child userName={userName} onLogout={() => {
+                setAuthState(AuthState.Unauthenticated);
+                setUserName(userName);
+              }} />} />
+              <Route path="/parent" element={<Parent userName={userName} onLogout={() => {
+                setAuthState(AuthState.Unauthenticated);
+                setUserName(userName);
+              }} />} />
               <Route path="/register" element={<Register 
                 userName={userName}
                 authState={authState}
@@ -49,7 +56,10 @@ export default function App() {
                   setUserName(loginUserName);
             }}
             />} />
-              <Route path="/trivia" element={<Trivia userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)}/>} />
+              <Route path="/trivia" element={<Trivia userName={userName} onLogout={() => {
+                setAuthState(AuthState.Unauthenticated);
+                setUserName(userName);
+              }} />} />
               <Route path="/student" element={<Student
                 userName={userName}
                 authState={authState}
@@ -58,8 +68,8 @@ export default function App() {
                   setUserName(userName);
                 }}
                 onLogin={(loginUserName) => {
-
-                  onAuthChange(loginUserName, AuthState.Authenticated);
+                  setAuthState(AuthState.Authenticated);
+                  setUserName(loginUserName);
             }}
             />} />
               <Route path='*' element={<NotFound />} />
