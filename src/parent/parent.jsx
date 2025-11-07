@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { TriviaNotifier } from './triviaNotif';
+import { Trivia } from '../trivia/trivia';
 
 export function Parent(props) {
   const userName = props.userName || 'Educator';
 
   const [events, setEvents] = React.useState([]);
+  const [score, setScores] = React.useState([]);
 
   React.useEffect(() => {
     TriviaNotifier.addHandler(handleTriviaEvent);
@@ -15,15 +17,17 @@ export function Parent(props) {
   }, []);
 
   /*React.useEffect(() => {
-    fetch('/api/scores', {method: 'GET',
+    fetch('/api/scores', {method: 'post',
       headers: { 'content-type': 'application/json' },
-       body: JSON.stringify(userName)})
+       body: JSON.stringify({username: userName})})
       .then((response) => response.json())
-      .then((scores) => {
-        setEvents(scores);
+      .then((userScores) => {
+        //setScores(JSON.parse(userScores));
+        console.log(JSON.parse(userScores));
+        //TriviaNotifier.broadcastEvent(userName, userScores);
       });
-  }, []); */
-
+  }, []); 
+*/
   function handleTriviaEvent(event) {
     setEvents((prevEvents) => {
       let newEvents = [event, ...prevEvents];

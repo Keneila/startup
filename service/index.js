@@ -115,7 +115,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
 });
 
 // GetScores
-apiRouter.get('/scores', verifyAuth, async (_req, res) => {
+apiRouter.post('/scores', verifyAuth, async (_req, res) => {
   userScores = [];
   const user = await findUser('username', req.body.username);
   for (const score of scores) {
@@ -123,7 +123,7 @@ apiRouter.get('/scores', verifyAuth, async (_req, res) => {
       userScores.push(score);
     }
   }
-  res.send(userScores);
+  res.send({userScores: userScores});
 });
 
 // SubmitScore

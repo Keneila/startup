@@ -11,12 +11,28 @@ export function Trivia(props) {
   const [correctAns, setCorrectAns] = React.useState('');
   const [score, setScore] = React.useState(0);
   const [order, setOrder] = React.useState([]);
+  const [allquests, setQuests] = React.useState([]);
+  const [num, setNum] = React.useState(0);
 
   React.useEffect(() => {
+    fetch(`https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=multiple`)
+      .then((response) => response.json())
+      .then((data) => {
+        setQuests(data.results);
+        const item = data.results[num];
+        setNum(num + 1);
+        setQuestion(item.question);
+        setCorrectAns(item.correct_answer);
+        shuffleAnswers(item.correct_answer, item.incorrect_answers[0], item.incorrect_answers[1], item.incorrect_answers[2]);
+      })
+      .catch();
+
+      /*
     setQuestion('Which is the capital of France?');
     setCorrectAns('Paris');
     //shuffleAnswers(A,B,C,D);
     setOrder(['Paris', 'London', 'Berlin', 'Madrid']);
+    */
   }, [correctAns]);
 
   const buttons = new Map();
@@ -35,6 +51,7 @@ export function Trivia(props) {
     }
     setScore((c / n) * 100);
     await highlight(buttonPos);
+    setCorrectAns("item.correct_answer");
   }
 
   async function highlight(buttonPos) {
