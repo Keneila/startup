@@ -100,12 +100,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [X] **Node.js/Express HTTP service** - Yep.
+- [X] **Static middleware for frontend** - Yep.
+- [X] **Calls to third party endpoints** - The Trivia Questions are a third party call
+- [X] **Backend service endpoints** - Set up all the necessary endpoints.
+- [X] **Frontend calls service endpoints** - Trivia, Logins, Register, all call on service endpoints.
+- [X] **Supports registration, login, logout, and restricted endpoint** - All the logins and registers work. Educators can login as an educator and a student, but students can only log in as students. Students can't register without a connected/pre-existing educator email. Authtokens are set up.
 
 
 ## 🚀 DB deliverable

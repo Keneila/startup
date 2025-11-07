@@ -16,7 +16,8 @@ class TriviaNotif {
             const score = Math.floor(Math.random() * 101);
             const studentName = "Student 1";
             const subject = "Social Studies";
-            this.broadcastEvent(studentName, { studentName, subject, score });
+            const email = "email@g"
+            this.broadcastEvent(studentName, { studentName, subject, score, email });
         }, 10000);
     }
 

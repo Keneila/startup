@@ -16,18 +16,18 @@ export function Parent(props) {
     };
   }, []);
 
-  /*React.useEffect(() => {
-    fetch('/api/scores', {method: 'post',
-      headers: { 'content-type': 'application/json' },
-       body: JSON.stringify({username: userName})})
-      .then((response) => response.json())
-      .then((userScores) => {
-        //setScores(JSON.parse(userScores));
-        console.log(JSON.parse(userScores));
-        //TriviaNotifier.broadcastEvent(userName, userScores);
-      });
-  }, []); 
-*/
+  React.useEffect(() => {
+  fetch('/api/scores')
+    .then((response) => response.json())
+    .then((scores) => {
+      setScores(scores);
+      for (const i in score){
+        TriviaNotifier.broadcastEvent(i.userName, i)
+      }
+    });
+}, []);
+
+
   function handleTriviaEvent(event) {
     setEvents((prevEvents) => {
       let newEvents = [event, ...prevEvents];

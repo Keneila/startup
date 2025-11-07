@@ -19,7 +19,7 @@ export function Trivia(props) {
       .then((response) => response.json())
       .then((data) => {
         setQuests(data.results);
-        const item = data.results[num];
+        const item = data.results[0];
         setQuestion(item.question);
         setCorrectAns(item.correct_answer);
         shuffleAnswers(item.correct_answer, item.incorrect_answers[0], item.incorrect_answers[1], item.incorrect_answers[2]);
