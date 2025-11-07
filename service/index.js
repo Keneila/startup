@@ -91,7 +91,6 @@ apiRouter.post('/auth/s-login', async (req, res) => {
 
 // GetAuth login an existing educator
 apiRouter.post('/auth/e-login', async (req, res) => {
-  
   const user = await findUser('username', req.body.username);
   const educator = await findEducator('username', req.body.username);
   if (user && educator) {
