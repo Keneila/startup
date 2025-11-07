@@ -15,24 +15,16 @@ export function Trivia(props) {
   const [num, setNum] = React.useState(0);
 
   React.useEffect(() => {
-    fetch(`https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=multiple`)
+    fetch(`https://opentdb.com/api.php?amount=20&category=23&difficulty=easy&type=multiple`)
       .then((response) => response.json())
       .then((data) => {
         setQuests(data.results);
         const item = data.results[num];
-        setNum(num + 1);
         setQuestion(item.question);
         setCorrectAns(item.correct_answer);
         shuffleAnswers(item.correct_answer, item.incorrect_answers[0], item.incorrect_answers[1], item.incorrect_answers[2]);
       })
       .catch();
-
-      /*
-    setQuestion('Which is the capital of France?');
-    setCorrectAns('Paris');
-    //shuffleAnswers(A,B,C,D);
-    setOrder(['Paris', 'London', 'Berlin', 'Madrid']);
-    */
   }, [correctAns]);
 
   const buttons = new Map();
@@ -51,7 +43,8 @@ export function Trivia(props) {
     }
     setScore((c / n) * 100);
     await highlight(buttonPos);
-    setCorrectAns("item.correct_answer");
+    setNum(num + 1)
+    setCorrectAns(num);
   }
 
   async function highlight(buttonPos) {
@@ -78,10 +71,12 @@ export function Trivia(props) {
   }
 
   async function restart() {
+    setNum(0);
     await saveScore(score);
     setNumber(0);
     setCorrect(0);
     setScore(0);
+
   }
 
 
@@ -190,6 +185,11 @@ export function Trivia(props) {
         <div>
         <Button className="btn btn-primary mb-4" onClick={() => restart()}> Restart</Button>
         </div>
+        
+      </div>
+      <div className="d-flex flex-column justify-content-center align-items-center">
+      <p> Note: Sometimes the API sends an empty set of questions, causing the game to either not load at all, or not load a new question. </p>
+      <p>Just reload or click a random answer until it does.</p>
       </div>
       </div>
     </main>
