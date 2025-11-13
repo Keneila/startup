@@ -27,6 +27,14 @@ function getUser(username) {
   return userCollection.findOne({ username: username });
 }
 
+function getEducatorByEmail(email) {
+  return educatorCollection.findOne({ email: email });
+}
+
+function getEducator(username) {
+  return educatorCollection.findOne({ username: username });
+}
+
 function getUserByToken(token) {
   return userCollection.findOne({ token: token });
 }
@@ -40,7 +48,7 @@ async function addEducator(educator) {
 }
 
 async function updateUser(user) {
-  await userCollection.updateOne({ email: user.email }, { $set: user });
+  await userCollection.updateOne({ username: user.username }, { $set: user });
 }
 
 async function addScore(score) {
@@ -60,6 +68,8 @@ function getHighScores() {
 module.exports = {
   getUser,
   addEducator,
+  getEducatorByEmail,
+  getEducator,
   getUserByEmail,
   getUserByToken,
   addUser,

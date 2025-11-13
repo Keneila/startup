@@ -82,6 +82,7 @@ apiRouter.post('/auth/s-login', async (req, res) => {
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
         user.token = uuid.v4();
+        await DB.updateUser(user)
         setAuthCookie(res, user.token);
         res.send({ username: user.username, email: user.email });
         return;
@@ -173,9 +174,9 @@ async function findUser(field, value) {
 async function findEducator(field, value) {
   if (!value) return null;
   if (field === 'email') {
-    return DB.getUserByEmail(value);
+    return DB.getEducatorByEmail(value);
   }
-  return DB.getUser(value);
+  return DB.getEducator(value);
   //return educators.find((e) => e[field] === value);
 }
 
