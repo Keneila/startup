@@ -19,8 +19,12 @@ db
   }
 })();
 
-function getUser(email) {
+function getUserByEmail(email) {
   return userCollection.findOne({ email: email });
+}
+
+function getUser(username) {
+  return userCollection.findOne({ username: username });
 }
 
 function getUserByToken(token) {
@@ -31,7 +35,7 @@ async function addUser(user) {
   await userCollection.insertOne(user);
 }
 
-async function addUser(educator) {
+async function addEducator(educator) {
   await educatorCollection.insertOne(educator);
 }
 
@@ -55,6 +59,8 @@ function getHighScores() {
 
 module.exports = {
   getUser,
+  addEducator,
+  getUserByEmail,
   getUserByToken,
   addUser,
   updateUser,
