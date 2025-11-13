@@ -155,19 +155,28 @@ async function createEducator(username, email) {
     email: email,
   };
   await DB.addEducator(educator)
-  educators.push(educator);
+  //educators.push(educator);
   return educator;
 }
 
 async function findUser(field, value) {
   if (!value) return null;
-
-  return users.find((u) => u[field] === value);
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  if (field === 'email') {
+    return DB.getUserByEmail(value);
+  }
+  return DB.getUser(value);
+  //return users.find((u) => u[field] === value);
 }
 async function findEducator(field, value) {
   if (!value) return null;
-
-  return educators.find((e) => e[field] === value);
+  if (field === 'email') {
+    return DB.getUserByEmail(value);
+  }
+  return DB.getUser(value);
+  //return educators.find((e) => e[field] === value);
 }
 
 
