@@ -134,7 +134,7 @@ apiRouter.get('/scores', verifyAuth, async (_req, res) => {
 // SubmitScore
 apiRouter.post('/score', verifyAuth, async (req, res) => {
   //scores.push(req.body);
-  await DB.addScore(newScore);
+  await DB.addScore(req.body);
   const scores = DB.getScores();
   res.send(scores);
 });

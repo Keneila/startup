@@ -7,7 +7,7 @@ const db = client.db('startup');
 const userCollection = db.collection('user');
 const scoreCollection = db.collection('score');
 const educatorCollection = db.collection('educator');
-db
+
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
   try {
@@ -57,7 +57,7 @@ async function addScore(score) {
 
 function getScores() {
   const query = { score: { $gt: 0, $lt: 100 } };
-  const cursor = scoreCollection.find(query, options);
+  const cursor = scoreCollection.find(query);
   return cursor.toArray();
 }
 
