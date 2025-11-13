@@ -55,7 +55,7 @@ async function addScore(score) {
   return scoreCollection.insertOne(score);
 }
 
-function getHighScores() {
+function getScores() {
   const query = { score: { $gt: 0, $lt: 900 } };
   const options = {
     sort: { score: -1 },
@@ -75,5 +75,5 @@ module.exports = {
   addUser,
   updateUser,
   addScore,
-  getHighScores,
+  getScores,
 };

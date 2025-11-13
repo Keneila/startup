@@ -127,12 +127,15 @@ apiRouter.get('/scores', verifyAuth, async (_req, res) => {
       userScores.push(score);
     }
   }*/
+ const scores = await DB.getScores();
   res.send(scores);
 });
 
 // SubmitScore
-apiRouter.post('/score', verifyAuth, (req, res) => {
-  scores.push(req.body);
+apiRouter.post('/score', verifyAuth, async (req, res) => {
+  //scores.push(req.body);
+  await DB.addScore(newScore);
+  const scores = DB.getScores();
   res.send(scores);
 });
 
