@@ -154,6 +154,7 @@ async function createEducator(username, email) {
     username: username,
     email: email,
   };
+  await DB.addEducator(educator)
   educators.push(educator);
   return educator;
 }
