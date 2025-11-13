@@ -56,11 +56,7 @@ async function addScore(score) {
 }
 
 function getScores() {
-  const query = { score: { $gt: 0, $lt: 900 } };
-  const options = {
-    sort: { score: -1 },
-    limit: 10,
-  };
+  const query = { score: { $gt: 0, $lt: 100 } };
   const cursor = scoreCollection.find(query, options);
   return cursor.toArray();
 }
