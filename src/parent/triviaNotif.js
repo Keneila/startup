@@ -40,7 +40,7 @@ class TriviaNotif {
 
     broadcastEvent(from, details) {
         const event = new EventMessage(from,details);
-        this.receiveEvent(event);
+        this.socket.send(JSON.stringify(event));
     }
 
     addHandler(handler) {
