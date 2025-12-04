@@ -15,5 +15,8 @@
     "express": "^5.1.0",
     "mongodb": "^7.0.0",
     "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "vite": "^7.2.6"
   }
 }
