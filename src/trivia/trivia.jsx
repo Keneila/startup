@@ -81,7 +81,16 @@ export function Trivia(props) {
 
 
   async function saveScore(score){
+    const response = await fetch('/api/auth/who', {
+              method: 'post',
+              body: JSON.stringify({ username: userName }),
+              headers: {
+                  'Content-type': 'application/json; charset=UTF-8',
+              },
+    });
+    const data = await response.json();
     const triviaScore = {
+      educator: data.educator.username,
       username: userName,
       subject: 'History',
       score: score,

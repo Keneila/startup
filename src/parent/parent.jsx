@@ -8,24 +8,14 @@ export function Parent(props) {
 
   const [events, setEvents] = React.useState([]);
   const [score, setScores] = React.useState([]);
+  const [students, setStudents] = React.useState([]);
 
-  React.useEffect(() => {
+  React.useEffect( () => {
     TriviaNotifier.addHandler(handleTriviaEvent);
     return () => {
       TriviaNotifier.removeHandler(handleTriviaEvent);
     };
   }, []);
-
-  React.useEffect(() => {
-  fetch('/api/scores')
-    .then((response) => response.json())
-    .then((scores) => {
-      setScores(scores);
-      for (const i in score){
-        TriviaNotifier.broadcastEvent(i.userName, i)
-      }
-    });
-}, []);
 
 
   function handleTriviaEvent(event) {
@@ -43,16 +33,18 @@ export function Parent(props) {
     for (const [index, event] of events.entries()) {
       let message = `${event.details.username} scored ${event.details.score}% on a ${event.details.subject} quiz`;
       let col;
-      if (event.details.score >= 70) {
-        col = 'success';
-      } else {
-        col = 'danger';
-      }
-      alerts.push(
-        <div key={index} className={`alert alert-${col}`} role="alert">
-          {message}
-        </div>
-      );
+      if (event.details.educator === props.userName) {
+        if (event.details.score >= 70) {
+          col = 'success';
+        } else {
+          col = 'danger';
+        }
+        alerts.push(
+          <div key={index} className={`alert alert-${col}`} role="alert">
+            {message}
+          </div>
+        );
+    }
     }
     return alerts;
   }

@@ -19,28 +19,9 @@ class TriviaNotif {
       try {
         console.log("Received WS message");
         const event = JSON.parse(await msg.data.text());
-        const response = await fetch('/api/auth/whos-educator', {
-            method: 'post',
-            body: JSON.stringify({ username: event.details.username }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        });
-        const data = await response.json();
-        if(data.isEducator == true){
-            this.receiveEvent(event);
-        }
+        this.receiveEvent(event);
       } catch {}
     };    
-
-
-       /*setInterval(() => {
-            const score = Math.floor(Math.random() * 101);
-            const studentName = "Student 1";
-            const subject = "Social Studies";
-            const email = "email@g"
-            this.receiveEvent(new EventMessage(studentName, { studentName, subject, score, email }));
-        }, 10000);*/
     }
 
     broadcastEvent(from, details) {
