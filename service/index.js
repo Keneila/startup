@@ -8,10 +8,6 @@ const { peerProxy } = require('./peerProxy.js');
 
 const authCookieName = 'token';
 
-let users = [];
-let scores = [];
-let educators = [];
-
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 app.use(express.json());
@@ -23,7 +19,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 // Router for service endpoints
-var apiRouter = express.Router();
+const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 
