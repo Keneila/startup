@@ -117,13 +117,6 @@ apiRouter.delete('/auth/logout', async (req, res) => {
 
 // GetScores
 apiRouter.get('/scores', verifyAuth, async (_req, res) => {
-  /*userScores = [];
-  const user = await findUser('username', req.body.username);
-  for (const score of scores) {
-    if (score.email === user.email) {
-      userScores.push(score);
-    }
-  }*/
  const scores = await DB.getScores();
   res.send(scores);
 });

@@ -7,20 +7,40 @@ export function Parent(props) {
   const userName = props.userName || 'Educator';
 
   const [events, setEvents] = React.useState([]);
-  const [score, setScores] = React.useState([]);
+  const [scores, setScores] = React.useState([]);
   const [students, setStudents] = React.useState([]);
 
   React.useEffect( () => {
+    getScores();
     TriviaNotifier.addHandler(handleTriviaEvent);
     return () => {
       TriviaNotifier.removeHandler(handleTriviaEvent);
     };
   }, []);
 
-
+  function getScores(){
+    fetch('/api/scores')
+      .then((response) => response.json())
+      .then((scores) => {
+        for (const e of scores) {
+          if (e.educator !== props.userName) {
+            scores = scores.filter(h => h !== e);
+          }
+        }
+        //console.log(scores)
+        setScores(scores);
+      });
+  }
   function handleTriviaEvent(event) {
     setEvents((prevEvents) => {
-      let newEvents = [event, ...prevEvents];
+      console.log(scores)
+      let newEvents = [event, ...prevEvents, ...scores];
+
+      for (const e of newEvents) {
+        if (e.details.educator !== props.userName) {
+          newEvents = newEvents.filter(h => h !== e);
+        }
+      }
       if(newEvents.length > 3) {
         newEvents = newEvents.slice(0,3);
       }
