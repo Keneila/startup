@@ -41,7 +41,7 @@ export function Parent(props) {
   function createEventAlerts() {
     const alerts = [];
     for (const [index, event] of events.entries()) {
-      let message = `${event.details.studentName} scored ${event.details.score}% on a ${event.details.subject} quiz`;
+      let message = `${event.details.username} scored ${event.details.score}% on a ${event.details.subject} quiz`;
       let col;
       if (event.details.score >= 70) {
         col = 'success';

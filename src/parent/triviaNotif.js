@@ -19,6 +19,7 @@ class TriviaNotif {
       try {
         console.log("Received WS message");
         const event = JSON.parse(await msg.data.text());
+        console.log(event);
         this.receiveEvent(event);
       } catch {}
     };    
