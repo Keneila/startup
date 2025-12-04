@@ -19,8 +19,17 @@ class TriviaNotif {
       try {
         console.log("Received WS message");
         const event = JSON.parse(await msg.data.text());
-        console.log(event);
-        this.receiveEvent(event);
+        const response = await fetch('/api/auth/whos-educator', {
+            method: 'post',
+            body: JSON.stringify({ username: event.details.username }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        const data = await response.json();
+        if(data.isEducator == true){
+            this.receiveEvent(event);
+        }
       } catch {}
     };    
 

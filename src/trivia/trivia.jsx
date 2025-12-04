@@ -83,7 +83,7 @@ export function Trivia(props) {
   async function saveScore(score){
     const triviaScore = {
       username: userName,
-      subject: 'Hisory',
+      subject: 'History',
       score: score,
       email: email
     };

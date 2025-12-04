@@ -128,6 +128,18 @@ apiRouter.get('/scores', verifyAuth, async (_req, res) => {
   res.send(scores);
 });
 
+apiRouter.post('/auth/whos-educator', async (req, res) => {
+  const user = await findUser('username', req.body.username);
+  if (user) {
+    const educator = await findEducator('email', user.email);
+    if (educator) {
+      res.send({ isEducator: true });
+        return;
+    }
+  }
+  res.status(401).send({ msg: 'Unauthorized' });
+});
+
 // SubmitScore
 apiRouter.post('/score', verifyAuth, async (req, res) => {
   //scores.push(req.body);
