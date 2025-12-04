@@ -15,12 +15,13 @@ class TriviaNotif {
     let port = window.location.port;
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
     this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
-    this.socket.onmessage = async (msg) => {
+    /*this.socket.onmessage = async (msg) => {
       try {
+        console.log("Received WS message");
         const event = JSON.parse(await msg.data.text());
         this.receiveEvent(event);
       } catch {}
-    };        
+    };    */    
 
 
        /*setInterval(() => {
