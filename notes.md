@@ -1,4 +1,87 @@
 # CS 260 Notes
+### What is the default port for HTTP/HTTPS/SSH? 
+HTTP: 80
+HTTPS: 442
+SSH: 22
+### What does an HTTP status code in the range of 300/400/500 indicate?
+"Redirection messages": 300s
+Client error responses: 400s
+Server error responses: 500s
+"Successful responses": 200s
+### What does the HTTP header content-type allow you to do?
+The content type of the request body
+### What does a “Secure cookie”/”Http-only cookie”/”Same-site cookie” do? https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
+What does the "Authorization" header in a HTTP request represent?
+The credentials of user authentication
+
+The HTTPOnly flag on cookies prevents a client browser from reading or writing a cookie.
+
+### Assuming the following Express middleware, what would be the console.log output for an HTTP GET request with a URL path of /api/document?
+
+### Given the following Express service code: What does the following front end JavaScript that performs a fetch return?
+
+### Given the following MongoDB query, select all of the matching documents {name:Mark}
+{ username: /.*cs260.*/ }
+Which MongoDB query would find all JSON objects with either a "score" above 100 OR a "username" value of "hacker"?
+{ $or: [(score: { $gt: 100 }), (username:"hacker")] }
+
+Which MongoDB query would find all JSON objects with a "score" value less than 25?
+{ score: { $lt: 25 } }
+
+Which MongoDB query would find all JSON objects with a "username" value of "cosmo25"?
+{ username: "cosmo25" }
+
+### How should user passwords be stored?
+User passwords should be sent over HTTPS, be hashed in the database, be salted
+### Assuming the following node.js websocket code in the back end, and the following front end websocket code, what will the front end log to the console?
+
+### What is the websocket protocol intended to provide?
+
+### What do the following acronyms stand for? JSX, JS, AWS, NPM, NVM
+NVM: Node Version Manager
+DOM: Document Object Model
+JS: JavaScript
+JSX: JavaScript XML
+AWS: Amazon Web Services
+NPM: Node Package Manager
+
+### Assuming an HTML document with a body element. What text content will the following React component generate?  The react component will use parameters.
+
+### Given a set of React components that include each other, what will be generated
+
+### What does a React component with React.useState do?
+What is the "useState" React component used for?
+Allowing React components to declare variables, update variables, and to trigger re-renders when the variable is updated
+
+### What are React Hooks used for?
+What is the "useEffect" React component used for?
+Allowing React components to run code after a page finishes rendering or after a specific React state is updated
+
+### What does the State Hook/Context Hook/Ref Hook/Effect Hook/Performance Hook do? https://react.dev/reference/react/hooks
+
+### Given React Router code, select statements that are true.
+
+### What does the package.json file do?
+Your project configuration file, defining project name, version, and package dependencies
+
+### What does the fetch function do?
+
+### What does node.js do?
+Runs JavaScript code outside of an internet browser
+
+### What does pm2 do?
+A daemon that handles running your deployed server
+
+### What does Vite do?
+Allows debugging web framework applications and bundling them for deployment
+
+What does a "vite.config.js" file do?
+Lists configurations for debugging and building with Vite
+
+
+
+
+
 
 Trivia API
 URL: https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=multiple
