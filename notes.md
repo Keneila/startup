@@ -31,7 +31,13 @@ The SameSite attribute lets servers specify whether/when cookies are sent with c
 
 __Secure-: Cookies with names starting with __Secure- must be set with the Secure attribute by a secure page (HTTPS).
 
-### Assuming the following Express middleware, what would be the console.log output for an HTTP GET request with a URL path of /api/document?
+### Assuming the following Express middleware, what would be the console.log output for an HTTP GET request with a URL path of /api/document?'
+
+A middleware function looks very similar to a routing function. That is because routing functions are also middleware functions. The only difference is that routing functions are only called if the associated pattern matches. Middleware functions are always called for every HTTP request unless a preceding middleware function does not call next. A middleware function has the following pattern:
+```js
+function middlewareName(req, res, next)
+```
+Remember that the order that you add your middleware to the Express app object controls the order that the middleware functions are called. Any middleware that does not call the next function after doing its processing, stops the middleware chain from continuing.
 
 ### Given the following Express service code: What does the following front end JavaScript that performs a fetch return?
 
@@ -57,6 +63,13 @@ User passwords should be sent over HTTPS, be hashed in the database, be salted
 
 ### What is the websocket protocol intended to provide?
 
+The core feature of WebSocket is that it is fully duplexed. This means that after the initial connection is made from a client, using vanilla HTTP, and then upgraded by the server to a WebSocket connection, the relationship changes to a peer-to-peer connection where either party can efficiently send data at any time.
+
+JavaScript running on a browser can initiate a WebSocket connection with the browser's WebSocket API. Assuming the browser is addressing an appropriate host and port (e.g., localhost:9900), first you create a WebSocket object: the first line below queries the browser to determine which protocol is being used (http or https) and selects the appropriate websocket upgrade (unsecure or secure, respectively); the second line creates the WebSocket object, using the selected protocol and the hostname and port currently being used by the browser:
+
+The server uses the ws package to create a WebSocketServer that is listening on the same port the browser is using. By specifying a port when you create the WebSocketServer, you are telling the server to listen for HTTP connections on that port and to automatically upgrade them to a WebSocket connection if the request has a connection: Upgrade header.
+
+
 ### What do the following acronyms stand for? JSX, JS, AWS, NPM, NVM
 NVM: Node Version Manager
 DOM: Document Object Model
@@ -69,6 +82,45 @@ NPM: Node Package Manager
 
 ### Given a set of React components that include each other, what will be generated
 
+One of the primary purposes of a component is to generate the user interface. This is done with the JSX returned from a component. Whatever is returned, inserted into the component HTML element.
+
+```js
+const hello = <div>Hello</div>;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(hello);
+```
+```html
+<div>Hello</div>
+```
+
+```js
+function Demo() {
+  const who = 'world';
+  return <b>Hello {who}</b>;
+}
+```
+```html
+<div>Component: <b>Hello world</b></div>
+```
+
+The following example creates a state variable called clicked and toggles the click state in the updateClicked function that gets called when the paragraph text is clicked.
+
+```js
+function App() {
+  const [clicked, updateClicked] = React.useState(false);
+
+  function onClicked() {
+    updateClicked(!clicked);
+  }
+
+  return <p onClick={onClicked}>clicked: {`${clicked}`}</p>;
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+```
+A component's properties and state are used by the React framework to determine the reactivity of the interface. Reactivity controls how a component reacts to actions taken by the user or events that happen within the application. Whenever a component's state or properties change, the render function for the component and all of its dependent component render functions are called.
+
 ### What does a React component with React.useState do?
 What is the "useState" React component used for?
 Allowing React components to declare variables, update variables, and to trigger re-renders when the variable is updated
@@ -78,8 +130,81 @@ What is the "useEffect" React component used for?
 Allowing React components to run code after a page finishes rendering or after a specific React state is updated
 
 ### What does the State Hook/Context Hook/Ref Hook/Effect Hook/Performance Hook do? https://react.dev/reference/react/hooks
+State lets a component “remember” information like user input. For example, a form component can use state to store the input value, while an image gallery component can use state to store the selected image index.
+
+To add state to a component, use one of these Hooks:
+
+useState declares a state variable that you can update directly.
+
+useReducer declares a state variable with the update logic inside a reducer function.
+
+
+Context lets a component receive information from distant parents without passing it as props. For example, your app’s top-level component can pass the current UI theme to all components below, no matter how deep.
+
+useContext reads and subscribes to a context.
+
+Ref Hooks 
+
+Refs let a component hold some information that isn’t used for rendering, like a DOM node or a timeout ID. Unlike with state, updating a ref does not re-render your component. Refs are an “escape hatch” from the React paradigm. They are useful when you need to work with non-React systems, such as the built-in browser APIs.
+
+useRef declares a ref. You can hold any value in it, but most often it’s used to hold a DOM node.
+
+useImperativeHandle lets you customize the ref exposed by your component. This is rarely used.
+
+Effect Hooks 
+
+Effects let a component connect to and synchronize with external systems. This includes dealing with network, browser DOM, animations, widgets written using a different UI library, and other non-React code.
+
+useEffect connects a component to an external system.
+
+
+Performance Hooks 
+A common way to optimize re-rendering performance is to skip unnecessary work. For example, you can tell React to reuse a cached calculation or to skip a re-render if the data has not changed since the previous render.
+
+To skip calculations and unnecessary re-rendering, use one of these Hooks:
+
+useMemo lets you cache the result of an expensive calculation.
+useCallback lets you cache a function definition before passing it down to an optimized component.
+
 
 ### Given React Router code, select statements that are true.
+
+A basic implementation of the router consists of a BrowserRouter component that encapsulates the entire application and controls the routing action. The Link, or NavLink, component captures user navigation events and modifies what is rendered by the Routes component by matching up the to and path attributes. The example contains two components. The App component with the router and a Page component that is routed to when a link is pressed.
+
+```js
+function Page({ color }) {
+  return (
+    <div className="page" style={{ backgroundColor: color }}>
+      <h1>{color}</h1>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="app">
+        <nav>
+          <NavLink to="/">Red</NavLink>
+          <NavLink to="/green">Green</NavLink>
+          <NavLink to="/blue">Blue</NavLink>
+        </nav>
+
+        <main>
+          <Routes>
+            <Route path="/" element={<Page color="red" />} exact />
+            <Route path="/green" element={<Page color="green" />} />
+            <Route path="/blue" element={<Page color="blue" />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+```
 
 ### What does the package.json file do?
 Your project configuration file, defining project name, version, and package dependencies
