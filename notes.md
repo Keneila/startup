@@ -218,6 +218,17 @@ Your project configuration file, defining project name, version, and package dep
 
 ### What does the fetch function do?
 
+Today, the fetch API is the preferred way to make HTTP requests. The fetch function is built into the browser's JavaScript runtime. This means you can call it from JavaScript code running in a browser.
+
+The basic usage of fetch takes a URL and returns a promise. The promise then function takes a callback function that is asynchronously called when the requested URL content is obtained. If the returned content is of type application/json you can use the json function on the response object to convert it to a JavaScript object.
+
+```js
+fetch('https://quote.cs260.click')
+  .then((response) => response.json())
+  .then((jsonResponse) => {
+    console.log(jsonResponse);
+  });
+```
 ### What does node.js do?
 Runs JavaScript code outside of an internet browser
 
