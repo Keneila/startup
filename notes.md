@@ -1,34 +1,54 @@
 # CS 260 Notes
 ### What is the default port for HTTP/HTTPS/SSH? 
+
 HTTP: 80
+
 HTTPS: 442
+
 SSH: 22
+
 ### What does an HTTP status code in the range of 300/400/500 indicate?
+
 "Redirection messages": 300s
+
 Client error responses: 400s
+
 Server error responses: 500s
+
 "Successful responses": 200s
+
 ### What does the HTTP header content-type allow you to do?
 The content type of the request body
 ### What does a “Secure cookie”/”Http-only cookie”/”Same-site cookie” do? https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
+
 What does the "Authorization" header in a HTTP request represent?
+
 The credentials of user authentication
 
 The HTTPOnly flag on cookies prevents a client browser from reading or writing a cookie.
+
+The SameSite attribute lets servers specify whether/when cookies are sent with cross-site requests — i.e., third-party cookies. 
+
+__Secure-: Cookies with names starting with __Secure- must be set with the Secure attribute by a secure page (HTTPS).
 
 ### Assuming the following Express middleware, what would be the console.log output for an HTTP GET request with a URL path of /api/document?
 
 ### Given the following Express service code: What does the following front end JavaScript that performs a fetch return?
 
 ### Given the following MongoDB query, select all of the matching documents {name:Mark}
+
 { username: /.*cs260.*/ }
+
 Which MongoDB query would find all JSON objects with either a "score" above 100 OR a "username" value of "hacker"?
+
 { $or: [(score: { $gt: 100 }), (username:"hacker")] }
 
 Which MongoDB query would find all JSON objects with a "score" value less than 25?
+
 { score: { $lt: 25 } }
 
 Which MongoDB query would find all JSON objects with a "username" value of "cosmo25"?
+
 { username: "cosmo25" }
 
 ### How should user passwords be stored?
