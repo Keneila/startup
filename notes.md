@@ -43,20 +43,21 @@ Remember that the order that you add your middleware to the Express app object c
 
 ### Given the following MongoDB query, select all of the matching documents {name:Mark}
 
+```
 { username: /.*cs260.*/ }
-
+```
 Which MongoDB query would find all JSON objects with either a "score" above 100 OR a "username" value of "hacker"?
-
+```
 { $or: [(score: { $gt: 100 }), (username:"hacker")] }
-
+```
 Which MongoDB query would find all JSON objects with a "score" value less than 25?
-
+```
 { score: { $lt: 25 } }
-
+```
 Which MongoDB query would find all JSON objects with a "username" value of "cosmo25"?
-
+```
 { username: "cosmo25" }
-
+```
 ### How should user passwords be stored?
 User passwords should be sent over HTTPS, be hashed in the database, be salted
 ### Assuming the following node.js websocket code in the back end, and the following front end websocket code, what will the front end log to the console?
@@ -71,11 +72,17 @@ The server uses the ws package to create a WebSocketServer that is listening on 
 
 
 ### What do the following acronyms stand for? JSX, JS, AWS, NPM, NVM
+
 NVM: Node Version Manager
+
 DOM: Document Object Model
+
 JS: JavaScript
+
 JSX: JavaScript XML
+
 AWS: Amazon Web Services
+
 NPM: Node Package Manager
 
 ### Assuming an HTML document with a body element. What text content will the following React component generate?  The react component will use parameters.
